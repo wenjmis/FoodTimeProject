@@ -36,7 +36,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="帳號："
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#E65400" />
 
             <EditText
                 android:id="@+id/editText"
@@ -63,7 +64,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="密碼："
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="#E65400" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -84,20 +86,14 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#F9CAAC"
                 android:text="登入"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.873"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.407" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="取消"
-                tools:layout_editor_absoluteX="19dp"
-                tools:layout_editor_absoluteY="14dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
