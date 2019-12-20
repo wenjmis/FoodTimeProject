@@ -130,4 +130,12 @@
         tools:layout_editor_absoluteX="142dp"
         tools:layout_editor_absoluteY="696dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Designed by CCUMIS"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="677dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
