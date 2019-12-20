@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         android:padding="5dp"
         android:paddingStart="5dp"
@@ -25,7 +25,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="83dp"
+            android:layout_height="75dp"
             android:orientation="horizontal">
 
             <TextView
@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:orientation="horizontal">
 
             <TextView
@@ -76,17 +76,68 @@
                 android:inputType="textPassword" />
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="75dp">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登入"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.873"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="取消"
+                tools:layout_editor_absoluteX="19dp"
+                tools:layout_editor_absoluteY="14dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text=" ▶ 註冊帳號"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" ▶ 忘記密碼"
+                android:textAlignment="center" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="foodTime ver 1.0"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="696dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Designed by CCUMIS"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="677dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
