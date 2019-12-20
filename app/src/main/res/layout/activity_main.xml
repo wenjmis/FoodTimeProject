@@ -8,6 +8,7 @@
     android:background="@drawable/loginpage">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:orientation="vertical"
@@ -47,7 +48,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center_vertical"
-                android:inputType="textPersonName" />
+                android:imeOptions="actionNext"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -75,6 +77,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center_vertical"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -88,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#F9CAAC"
                 android:text="登入"
+                android:textColor="#3C3F41"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,6 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="regist"
                 android:text=" ▶ 註冊帳號"
                 android:textAlignment="center" />
 
@@ -125,15 +130,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="foodTime ver 1.0"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.957" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Designed by CCUMIS"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="677dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.647" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
