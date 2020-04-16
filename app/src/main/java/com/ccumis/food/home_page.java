@@ -16,22 +16,26 @@ import java.util.List;
 
 public class home_page extends AppCompatActivity {
 
-    static final int NUM_ITEMS = 2;
-    private List<Fragment> fragmentList = new ArrayList<Fragment>();
-    private String[] strings = new String[]{"A","B"};
 
+    private List<Fragment> fragmentList = new ArrayList<Fragment>();
+    private String[] strings = new String[3];
+    final int NUM_ITEMS = strings.length;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        strings[0]=getResources().getString(R.string.tab1);
+        strings[1]=getResources().getString(R.string.tab2);
+        strings[2]=getResources().getString(R.string.tab3);
         fragmentList.add(new Page1());
         fragmentList.add(new Page2());
+        fragmentList.add(new Page3());
         initView();
     }
 
     private void initView() {
         TabLayout tab_layout = findViewById(R.id.tab_layout);
-        tab_layout.setTabMode(1);
+        tab_layout.setTabMode(TabLayout.MODE_FIXED);
         ViewPager viewPager = findViewById(R.id.viewPager);
         MyAdapter fragmentAdapter = new  MyAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdapter);

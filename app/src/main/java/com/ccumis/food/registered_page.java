@@ -13,4 +13,8 @@ public class registered_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered_page);
     }
+    public void go(View view){
+        Intent intent = new Intent(this,registered_page2.class);
+        startActivity(intent);
+    }
 }
