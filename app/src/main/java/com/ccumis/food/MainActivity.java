@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     //註冊按鍵事件
     public void regist(View view) {
-        Intent intent = new Intent(this,registered_page.class);
+        Intent intent = new Intent(this,registered_page0.class);
         startActivity(intent);
     }
     public  void login(View view){

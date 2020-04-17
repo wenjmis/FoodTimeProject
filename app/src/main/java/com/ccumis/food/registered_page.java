@@ -16,5 +16,6 @@ public class registered_page extends AppCompatActivity {
     public void go(View view){
         Intent intent = new Intent(this,registered_page2.class);
         startActivity(intent);
+        registered_page.this.finish();
     }
 }
