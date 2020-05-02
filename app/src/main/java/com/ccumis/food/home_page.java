@@ -10,15 +10,14 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class home_page extends AppCompatActivity {
 
 
-    private List<Fragment> fragmentList = new ArrayList<Fragment>();
-    private String[] strings = new String[3];
+    private List<Fragment> fragmentList = new ArrayList<>();
+    private String[] strings = new String[4];
     final int NUM_ITEMS = strings.length;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +26,24 @@ public class home_page extends AppCompatActivity {
         strings[0]=getResources().getString(R.string.tab1);
         strings[1]=getResources().getString(R.string.tab2);
         strings[2]=getResources().getString(R.string.tab3);
+        strings[3]=getResources().getString(R.string.tab4);
         fragmentList.add(new Page1());
         fragmentList.add(new Page2());
         fragmentList.add(new Page3());
+        fragmentList.add(new Page4());
         initView();
     }
 
     private void initView() {
         TabLayout tab_layout = findViewById(R.id.tab_layout);
-        tab_layout.setTabMode(TabLayout.MODE_FIXED);
         ViewPager viewPager = findViewById(R.id.viewPager);
         MyAdapter fragmentAdapter = new  MyAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentAdapter);
         tab_layout.setupWithViewPager(viewPager);
+        tab_layout.getTabAt(0).setIcon(getResources().getDrawable(R.drawable.ic_home_24px));
+        tab_layout.getTabAt(1).setIcon(getResources().getDrawable(R.drawable.ic_explore_24px));
+        tab_layout.getTabAt(2).setIcon(getResources().getDrawable(R.drawable.ic_forum_24px));
+        tab_layout.getTabAt(3).setIcon(getResources().getDrawable(R.drawable.ic_settings_applications_24px));
 
     }
     public class MyAdapter extends FragmentPagerAdapter {
