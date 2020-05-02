@@ -41,7 +41,7 @@
             app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="selected">
+            android:onClick="selected_Layout2">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/appCompatImageView"
@@ -68,7 +68,7 @@
             app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="selected">
+            android:onClick="selected_Layout1">
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"

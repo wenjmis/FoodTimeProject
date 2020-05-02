@@ -19,18 +19,21 @@ public class registered_page0 extends AppCompatActivity {
         setContentView(R.layout.activity_registered_page0);
 
     }
-    public void selected(View view){
-        LinearLayout linearLayout1= findViewById(R.id.linearLayout1);
-        LinearLayout linearLayout2= findViewById(R.id.linearLayout2);
-        if(linearLayout1.hasOnClickListeners()){
+    //餐主
+    public void selected_Layout1(View view){
             Intent intent = new Intent(this,registered_page.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("type",0);
+            intent.putExtras(bundle);
             startActivity(intent);
-        }
-        if(linearLayout2.hasOnClickListeners()){
-            Intent intent = new Intent(this,registered_page.class);
-            startActivity(intent);
-            registered_page0.this.finish();
-        }
+    }
+    //食客
+    public void selected_Layout2(View view){
+        Intent intent = new Intent(this,registered_page.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("type",1);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     @Override
