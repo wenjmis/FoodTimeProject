@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/loginpage">
+    android:background="@drawable/loginpage"
+    android:theme="@style/loginTheme">
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
