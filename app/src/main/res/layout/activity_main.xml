@@ -36,7 +36,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="帳號："
+                android:text="信箱："
                 android:textAlignment="center"
                 android:textColor="#E65400" />
 

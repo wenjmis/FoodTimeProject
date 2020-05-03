@@ -7,9 +7,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +50,13 @@ public class home_page extends AppCompatActivity {
         tab_layout.getTabAt(3).setIcon(getResources().getDrawable(R.drawable.ic_settings_applications_24px));
 
     }
+
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity( new Intent(this,MainActivity.class));
+        finish();
+    }
+
     public class MyAdapter extends FragmentPagerAdapter {
         public MyAdapter(FragmentManager supportFragmentManager) {
             super(supportFragmentManager);
