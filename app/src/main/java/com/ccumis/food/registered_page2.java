@@ -40,12 +40,6 @@ public class registered_page2 extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView2);
         textView.setText("親愛的用戶您好：\n"+"      "+getResources().getString(R.string.notice));
 
-        if(fAuth.getCurrentUser() != null){
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
 
 
         bundle = this.getIntent().getExtras();
@@ -112,7 +106,10 @@ public class registered_page2 extends AppCompatActivity {
                         Toast.makeText(registered_page2.this, "註冊成功", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+
                     }
                     else {
                         Toast.makeText(registered_page2.this, "Error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
