@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".registered_page0"
-    android:background="@drawable/page1"
-    android:theme="@style/loginTheme">
+    android:background="@drawable/page1">
     <TextView
         android:id="@+id/textView1"
         android:layout_width="350dp"
