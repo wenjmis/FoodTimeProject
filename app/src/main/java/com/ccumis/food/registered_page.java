@@ -18,7 +18,6 @@ public class registered_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered_page);
 
-
     }
     public void go(View view){
         CheckBox checkBox = findViewById(R.id.checkBox2);
