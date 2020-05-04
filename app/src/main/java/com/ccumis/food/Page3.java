@@ -15,4 +15,6 @@ public class Page3 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_page3, container, false);
     }
+
+    
 }
