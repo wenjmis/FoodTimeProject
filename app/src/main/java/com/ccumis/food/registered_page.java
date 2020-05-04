@@ -17,7 +17,6 @@ public class registered_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered_page);
-        
 
     }
     public void go(View view){
