@@ -13,7 +13,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".registered_page0" />
+        <activity android:name=".businregist_page" />
         <activity android:name=".registered_page2" />
         <activity android:name=".home_page" />
         <activity android:name=".MainActivity">

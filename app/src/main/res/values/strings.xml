@@ -3,8 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notice">接下來您將要開始完成「食刻」(以下將以本平台代稱)之帳號申請，申請過程中您的資料將不會外流給其他廠商，僅作為本平台紀錄以及遇到糾紛時作為裁定的依據，請放心填入資料。</string>
-    <string name="tab1">tab1</string>
-    <string name="tab2">tab2</string>
-    <string name="tab3">tab3</string>
-    <string name="tab4">tab4</string>
+    <string name="tab1">Home</string>
+    <string name="tab2">Explore</string>
+    <string name="tab3">Forum</string>
+    <string name="tab4">Setting</string>
 </resources>

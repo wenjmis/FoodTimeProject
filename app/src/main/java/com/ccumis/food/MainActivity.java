@@ -16,17 +16,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
-    public boolean pass =false;
-    //private FirebaseAuth fAuth  = FirebaseAuth.getInstance();
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference collectionReference = db.collection("User");
     private FirebaseAuth fAuth  = FirebaseAuth.getInstance();
@@ -40,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     //註冊按鍵事件
     public void regist(View view) {
-        Intent intent = new Intent(this,registered_page0.class);
+        Intent intent = new Intent(this, registered_page.class);
         startActivity(intent);
     }
     public void login(View view){

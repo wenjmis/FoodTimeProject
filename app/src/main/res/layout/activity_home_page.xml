@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="?actionBarSize"
-            android:text="食歲"
+            android:text="食刻"
             android:textSize="28dp" />
     </com.google.android.material.appbar.AppBarLayout>
 
