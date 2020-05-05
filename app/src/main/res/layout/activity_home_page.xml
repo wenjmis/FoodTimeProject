@@ -27,10 +27,10 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="#F3E5DD"
-        app:layout_constraintBottom_toBottomOf="@id/tab_layout"
-        app:layout_constraintTop_toTopOf="@id/appBarLayout" />
+        app:layout_constraintBottom_toTopOf="@id/tab_layout"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

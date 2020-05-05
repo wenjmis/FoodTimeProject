@@ -1,4 +1,4 @@
-package com.ccumis.food;
+package com.ccumis.food.Model;
 
 public class User {
 
