@@ -63,42 +63,6 @@ public class Page3 extends Fragment {
 
         readMessage();
 
-        /*listView = RootView.findViewById(R.id.listview);
-        adapter =  new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(adapter);
-        DatabaseReference Reference = FirebaseDatabase.getInstance().getReference().getRoot();
-        Reference.addListenerForSingleValueEvent(new ValueEventListener(){
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot){
-                Set<String> myset = new HashSet<String>();
-                Iterator i = dataSnapshot.getChildren().iterator();
-                while (i.hasNext()) {
-                    myset.add(((DataSnapshot)i.next()).getKey());
-                }
-                list.clear();
-                list.addAll(myset);
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent= new Intent(getContext(),Chatroom.class);
-                intent.putExtra("room name", ((TextView)view).getText().toString());
-                startActivity(intent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
         return view;
     }
 
