@@ -2,6 +2,7 @@ package com.ccumis.food.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,13 +35,17 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         Message message = messages.get(position);
         holder.username.setText(message.sender_id);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, chatroom.class));
+                Intent intent =new Intent(context, chatroom.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("receiver_id",holder.username.toString());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }

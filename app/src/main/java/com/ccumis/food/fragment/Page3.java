@@ -78,6 +78,9 @@ public class Page3 extends Fragment {
                     if(message.receiver_id.equals(firebaseUser.getUid())){
                         messages.add(message);
                     }
+                    else if(message.sender_id.equals(firebaseUser.getUid())){
+                        messages.add(message);
+                    }
                 }
 
                 chatAdapter = new chatAdapter(getContext(),messages);
