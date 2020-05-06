@@ -17,8 +17,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ccumis.food.Model.Message;
+import com.ccumis.food.Model.Room;
 import com.ccumis.food.R;
 import com.ccumis.food.adapter.chatAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,8 +29,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -41,7 +49,7 @@ public class Page3 extends Fragment {
     //ListView listView;
 
     private chatAdapter chatAdapter;
-    private List<Message> messages;
+    private List<Room> rooms;
     private RecyclerView recyclerView;
 
     @Override
@@ -59,31 +67,47 @@ public class Page3 extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        messages = new ArrayList<>();
+        rooms = new ArrayList<>();
 
-        readMessage();
+        readRoom();
 
         return view;
     }
 
+    private void readRoom() {
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("Room").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot : task.getResult()){
+                        Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"));
+                        if(room.getMenber_1().equals(firebaseUser.getUid()))
+                        rooms.add(room);
+                    }
+                    chatAdapter = new chatAdapter(getContext(),rooms);
+                    recyclerView.setAdapter(chatAdapter);
+                }
+            }
+        });
+    }
+
     private void readMessage() {
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Message");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Room");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                messages.clear();
+                rooms.clear();
                 for(DataSnapshot snapshot :dataSnapshot.getChildren()){
-                    Message message = snapshot.getValue(Message.class);
-                    if(message.receiver_id.equals(firebaseUser.getUid())){
-                        messages.add(message);
-                    }
-                    else if(message.sender_id.equals(firebaseUser.getUid())){
-                        messages.add(message);
+                    Room room = snapshot.getValue(Room.class);
+                    if(room.getMenber_1().equals(firebaseUser.getUid())){
+                        rooms.add(room);
                     }
                 }
 
-                chatAdapter = new chatAdapter(getContext(),messages);
+                chatAdapter = new chatAdapter(getContext(),rooms);
                 recyclerView.setAdapter(chatAdapter);
             }
 
