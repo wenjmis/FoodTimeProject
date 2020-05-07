@@ -2,6 +2,7 @@ package com.ccumis.food.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ccumis.food.Model.Room;
 import com.ccumis.food.chatroom;
 import com.ccumis.food.Model.Message;
 import com.ccumis.food.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
 public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ViewHolder> {
     private Context context;
-    private List<Message> messages;
+    private List<Room> rooms;
 
-    public chatAdapter(Context context, List<Message> messages) {
+    public chatAdapter(Context context, List<Room> rooms) {
         this.context = context;
-        this.messages = messages;
+        this.rooms = rooms;
     }
 
     @NonNull
@@ -34,20 +38,30 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Message message = messages.get(position);
-        holder.username.setText(message.sender_id);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        Room room = rooms.get(position);
+        if (room.getMenber_1().equals(firebaseUser.getUid())){
+            holder.username.setText(room.getMenber_2());
+        }
+        else{
+            holder.username.setText(room.getMenber_1());
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, chatroom.class));
+                Intent intent =new Intent(context, chatroom.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("receiver_id",holder.username.getText().toString());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return messages.size();
+        return rooms.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

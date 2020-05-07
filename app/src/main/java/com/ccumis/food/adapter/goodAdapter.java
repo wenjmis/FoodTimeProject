@@ -1,6 +1,8 @@
 package com.ccumis.food.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ccumis.food.Model.commodity;
 import com.ccumis.food.R;
+import com.ccumis.food.chatroom;
 
 import java.util.List;
 
@@ -32,8 +35,8 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        commodity commodity = commodities.get(position);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final commodity commodity = commodities.get(position);
         holder.good_name.setText(commodity.good_name);
         holder.good_distribution.setText(commodity.good_distribution);
         holder.last_time.setText(commodity.last_time);
@@ -44,6 +47,17 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
         else
             holder.category.setText("未提供");
         holder.username.setText(commodity.user_id);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent =  new Intent(context, chatroom.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("receiver_id",commodity.user_id);
+               intent.putExtras(bundle);
+               context.startActivity(intent);
+            }
+        });
     }
 
 
