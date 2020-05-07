@@ -7,4 +7,27 @@
     <string name="tab2">Explore</string>
     <string name="tab3">Forum</string>
     <string name="tab4">Setting</string>
+    <string name="密碼">密碼</string>
+    <string name="登入">登入</string>
+    <string name="註冊帳號">註冊帳號</string>
+    <string name="忘記密碼">忘記密碼</string>
+    <string name="商家註冊">商家註冊</string>
+    <string name="店名">店名</string>
+    <string name="地址">地址</string>
+    <string name="連絡電話">連絡電話</string>
+    <string name="真實姓名">真實姓名</string>
+    <string name="暱稱可更換">暱稱可更換</string>
+    <string name="信箱用於登入">信箱(用於登入)</string>
+    <string name="居住地址">居住地址</string>
+    <string name="確認密碼">確認密碼</string>
+    <string name="是否新增商家資訊">是否新增商家資訊</string>
+    <string name="註冊須知">註冊須知</string>
+    <string name="我以詳閱註冊須知">我以詳閱註冊須知</string>
+    <string name="品名">品名</string>
+    <string name="描述">描述</string>
+    <string name="種類">種類</string>
+    <string name="剩餘時間">剩餘時間</string>
+    <string name="上傳者">上傳者</string>
+    <string name="信箱">信箱</string>
+    <string name="登出">登出</string>
 </resources>

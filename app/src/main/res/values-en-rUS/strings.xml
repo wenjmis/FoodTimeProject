@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">food</string>
+    <string name="密碼">Password</string>
+    <string name="登入">Log In</string>
+    <string name="忘記密碼">Forgot Password?</string>
+    <string name="註冊帳號">Create Account</string>
+    <string name="商家註冊">Store Registration</string>
+    <string name="店名">Shop Name</string>
+    <string name="地址">Address</string>
+    <string name="連絡電話">Phone</string>
+    <string name="真實姓名">Real Name</string>
+    <string name="暱稱可更換">Nickname</string>
+    <string name="信箱用於登入">E-mail</string>
+    <string name="居住地址">Address</string>
+    <string name="確認密碼">Confirm Password</string>
+    <string name="是否新增商家資訊">Add to shop information</string>
+    <string name="註冊須知">Registration Agreement</string>
+    <string name="我以詳閱註冊須知">I have read the agreement</string>
+    <string name="品名">Item</string>
+    <string name="描述">Description</string>
+    <string name="種類">Type</string>
+    <string name="剩餘時間">Time Remaining</string>
+    <string name="上傳者">Uploader</string>
+    <string name="信箱">E-mail</string>
+    <string name="登出">Log Out</string>
+</resources>
