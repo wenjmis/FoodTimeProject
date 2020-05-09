@@ -31,17 +31,17 @@
         app:layout_constraintTop_toTopOf="@+id/textView7">
 
         <LinearLayout
+            android:id="@+id/L1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/L1"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="真實姓名"
+                android:hint="@string/rName"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -50,23 +50,22 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="" />
+                    android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/L2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/L2"
-            app:layout_constraintTop_toBottomOf="@+id/L1"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/L1">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="暱稱(可更換)"
+                android:hint="@string/nickname"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -81,17 +80,17 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/L3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/L3"
-            app:layout_constraintTop_toBottomOf="@+id/L2"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/L2">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="信箱(用於登入)"
+                android:hint="@string/mailForLog"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -99,25 +98,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
                     android:ems="10"
                     android:inputType="textEmailAddress"
-                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/L4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/L4"
-            app:layout_constraintTop_toBottomOf="@+id/L3"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/L3">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="密碼"
+                android:hint="@string/pwd"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -132,17 +131,17 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/L5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/L5"
-            app:layout_constraintTop_toBottomOf="@+id/L4"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/L4">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="連絡電話"
+                android:hint="@string/tel"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -157,17 +156,17 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/L6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/L6"
-            app:layout_constraintTop_toBottomOf="@+id/L5"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/L5">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="居住地址"
+                android:hint="@string/rAdd"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -188,15 +187,15 @@
             android:layout_gravity="right"
             android:background="@drawable/go"
             android:onClick="go"
-            app:layout_constraintTop_toBottomOf="@+id/L6"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/L6" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="是否新增商家資訊"
+            android:text="@string/newShopInfo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/L6" />
@@ -209,7 +208,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/L3">
+            app:layout_constraintTop_toBottomOf="@+id/L6">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

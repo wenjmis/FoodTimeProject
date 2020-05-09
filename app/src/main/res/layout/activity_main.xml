@@ -36,9 +36,10 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="信箱："
+                android:text="@string/mail"
                 android:textAlignment="center"
-                android:textColor="#E65400" />
+                android:textColor="#E65400"
+                tools:text="信箱" />
 
             <EditText
                 android:id="@+id/editText"
@@ -66,9 +67,10 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="密碼："
+                android:text="@string/pwd"
                 android:textAlignment="center"
-                android:textColor="#E65400" />
+                android:textColor="#E65400"
+                tools:text="密碼：" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -91,13 +93,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#F9CAAC"
-                android:text="登入"
+                android:onClick="login"
                 android:textColor="#3C3F41"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:onClick="login"/>
+                tools:text="@string/logIn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -112,8 +114,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="regist"
-                android:text=" ▶ 註冊帳號"
-                android:textAlignment="center" />
+                android:text="@string/createAcc"
+                android:textAlignment="center"
+                tools:text="註冊帳號" />
 
             <TextView
                 android:id="@+id/textView5"

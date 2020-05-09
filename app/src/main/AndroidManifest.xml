@@ -3,8 +3,7 @@
     package="com.ccumis.food">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".Home"
@@ -15,18 +14,25 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addGoods"
-            android:theme="@style/AppTheme.Pop_window"
-            android:screenOrientation="nosensor"/>
-        <activity android:name=".chatroom"
-            android:screenOrientation="nosensor"/>
-        <activity android:name=".businregist_page"
-            android:screenOrientation="nosensor"/>
-        <activity android:name=".registered_page2"
-            android:screenOrientation="nosensor"/>
-        <activity android:name=".home_page"
-            android:screenOrientation="nosensor"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".personnelInfo"></activity>
+        <activity
+            android:name=".addGoods"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.Pop_window" />
+        <activity
+            android:name=".chatroom"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".businregist_page"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".registered_page2"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".home_page"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,8 +40,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registered_page"
-            android:screenOrientation="nosensor"/>
+        <activity
+            android:name=".registered_page"
+            android:screenOrientation="nosensor" />
     </application>
 
 </manifest>

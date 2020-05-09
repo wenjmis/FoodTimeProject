@@ -3,16 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Page4">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:background="@drawable/page1"
+    tools:context=".fragment.Page4" >
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="logout"
-        android:text="登出" />
+        android:id="@+id/button9"
+        android:layout_width="140dp"
+        android:layout_height="75dp"
+        android:layout_gravity="clip_horizontal|center"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/go"
+        android:text="Button"
+        android:textSize="22sp"
+        tools:text="修改個人資料" />
 
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|clip_horizontal|center"
+        android:layout_marginBottom="230dp"
+        android:background="@drawable/go"
+        android:text="Button"
+        android:textSize="22sp"
+        tools:text="登出" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_gravity="clip_horizontal|center|center_horizontal"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/go"
+        android:text="Button"
+        android:textSize="22sp"
+        tools:text="版本資訊" />
 </FrameLayout>
