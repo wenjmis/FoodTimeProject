@@ -30,5 +30,4 @@
     <string name="上傳者">上傳者</string>
     <string name="信箱">信箱</string>
     <string name="登出">登出</string>
-    <string name="google_map_key" templplateMergeStrategy="preserve" translatable="false">Key</string>
 </resources>

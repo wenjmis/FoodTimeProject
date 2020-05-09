@@ -1,13 +1,19 @@
 package com.ccumis.food;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.ccumis.food.fragment.Page1;
@@ -22,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -77,6 +84,15 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
         LatLng sydney = new LatLng(-34,151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+    public void Addgoods(View view){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Intent intent = new Intent(this,addGoods.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("UserId",user.getUid());
+        intent.putExtras(bundle);
+        startActivity(intent);
+
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter{
