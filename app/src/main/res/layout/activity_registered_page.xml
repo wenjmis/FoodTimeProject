@@ -101,6 +101,7 @@
                     android:layout_gravity="center"
                     android:ems="10"
                     android:inputType="textEmailAddress"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@."
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
