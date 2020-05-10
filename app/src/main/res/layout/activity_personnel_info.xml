@@ -11,14 +11,15 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
         android:layout_marginTop="90dp"
         android:layout_marginEnd="125dp"
-        android:text="TextView"
+        android:text="修改個人資訊"
         android:textColor="#F8CBAD"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="修改個人資訊" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -33,7 +34,10 @@
             android:id="@+id/L1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -42,6 +46,7 @@
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -56,9 +61,10 @@
             android:layout_marginBottom="50dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/L1"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="350dp">
+            app:layout_constraintVertical_bias="0.0">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -67,6 +73,7 @@
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/oripwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -84,10 +91,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="確認密碼"
+                android:hint="新密碼"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newpwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -104,10 +112,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="連絡電話"
+                android:hint="確認密碼"
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/conpwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -130,6 +139,7 @@
                 android:textColorHint="#C55A11">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/raddr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -141,10 +151,51 @@
             android:layout_height="79dp"
             android:background="@drawable/go"
             android:fontFeatureSettings="15dp"
-            android:text="Button"
+            android:onClick="updateInfo"
+            android:text="確認修改"
+            app:layout_constraintBottom_toBottomOf="@+id/button4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/button4"
+            app:layout_constraintTop_toBottomOf="@+id/L6"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="111dp"
+            android:layout_height="79dp"
+            android:background="@drawable/go"
+            android:onClick="goBack"
+            android:text="返回"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="確認修改" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/L6"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <LinearLayout
+            android:id="@+id/L6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/L5">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="聯絡電話"
+                android:textColorHint="#C55A11">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

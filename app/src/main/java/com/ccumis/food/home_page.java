@@ -53,6 +53,7 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
         //google_map
         // mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         //mapFragment.getMapAsync(this);
+
     }
 
 
@@ -87,6 +88,11 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
         startActivity(intent);
 
     }
+    public void ChangeInfo (View view){
+        startActivity(new Intent(this,personnelInfo.class));
+
+    }
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter{
 
