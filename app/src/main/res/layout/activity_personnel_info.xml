@@ -11,15 +11,41 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="125dp"
         android:text="修改個人資訊"
         android:textColor="#F8CBAD"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_weight="1"
+        android:text="真實姓名"
+        android:textColor="#C55A11"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.45" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -28,7 +54,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView9">
+        app:layout_constraintTop_toTopOf="@id/textView9"
+        app:layout_constraintVertical_bias="0.61">
 
         <LinearLayout
             android:id="@+id/L1"
@@ -37,6 +64,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -49,7 +77,6 @@
                     android:id="@+id/nickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -59,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +103,13 @@
                     android:id="@+id/oripwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <Switch
+                    android:id="@+id/pwdChg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="不更改密碼" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -147,9 +181,8 @@
 
         <Button
             android:id="@+id/button7"
-            android:layout_width="111dp"
-            android:layout_height="79dp"
-            android:background="@drawable/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFeatureSettings="15dp"
             android:onClick="updateInfo"
             android:text="確認修改"
@@ -162,9 +195,8 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="111dp"
-            android:layout_height="79dp"
-            android:background="@drawable/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:onClick="goBack"
             android:text="返回"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -190,11 +222,20 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="hint" />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="顯示密碼"
+            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/L6" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

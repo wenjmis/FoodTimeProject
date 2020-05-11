@@ -3,56 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.Page4">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="140dp"
-        android:layout_height="75dp"
-
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="ChangeInfo"
         android:text="修改個人資料"
         android:textSize="22sp"
-        tools:layout_gravity="center" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="140dp"
-        android:layout_height="70dp"
-
-
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="版本資訊"
-        android:textSize="22sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|center"
-        android:orientation="horizontal"></LinearLayout>
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button9"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="140dp"
-        android:layout_height="70dp"
-
-        android:background="@drawable/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="logout"
         android:text="登出"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button11"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

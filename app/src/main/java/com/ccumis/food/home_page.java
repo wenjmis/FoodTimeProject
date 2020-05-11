@@ -9,6 +9,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.ccumis.food.fragment.Page1;
 import com.ccumis.food.fragment.Page2;
@@ -28,6 +30,9 @@ import java.util.ArrayList;
 public class home_page extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Button version;
+
+
 
 
     @Override
@@ -49,6 +54,7 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
         tabLayout.getTabAt(1).setIcon(getResources().getDrawable(R.drawable.ic_explore_24px));
         tabLayout.getTabAt(2).setIcon(getResources().getDrawable(R.drawable.ic_forum_24px));
         tabLayout.getTabAt(3).setIcon(getResources().getDrawable(R.drawable.ic_settings_applications_24px));
+
 
         //google_map
         // mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -94,6 +100,7 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
     }
 
 
+
     class ViewPagerAdapter extends FragmentPagerAdapter{
 
         private ArrayList<Fragment> fragments;
@@ -125,4 +132,7 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
             return titles.get(position);
         }
     }
+
+
+
 }

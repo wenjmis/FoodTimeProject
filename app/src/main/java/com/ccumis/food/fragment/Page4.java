@@ -1,13 +1,16 @@
 package com.ccumis.food.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.ccumis.food.R;
 
@@ -25,10 +28,12 @@ public class Page4 extends Fragment {
     private View v;
     private Button changeInfo;
 
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public Button button5;
+
     public Page4() {
         // Required empty public constructor
     }
@@ -55,6 +60,9 @@ public class Page4 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
     };
 
 
@@ -62,11 +70,10 @@ public class Page4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_page4,container,false);
-
-
-
-        return v;
+        return  v;
     }
+
+
 
 
 }

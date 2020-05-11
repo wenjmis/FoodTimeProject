@@ -15,12 +15,16 @@ public class User {
 
 
 
-    public User( String nickN, String mail, String phone, String address, String uId) {
+    public User( String realN, String nickN, String mail, String phone, String address, String uId) {
         this.nickN = nickN;
         this.mail = mail;
         this.phone = phone;
         this.address = address;
+        this.realN = realN;
         UId = uId;
+    }
+    public String getRealN(){
+        return realN;
     }
 
     public String getUId() {
