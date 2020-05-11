@@ -18,7 +18,11 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +35,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class addGoods extends AppCompatActivity {
+    private String locations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,18 +77,25 @@ public class addGoods extends AppCompatActivity {
 
     public void submit_goods(View view) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("commodity");
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-        Locations locations = new Locations();
         EditText good_distribution=findViewById(R.id.good_distribution);
         EditText good_name=findViewById(R.id.good_name);
         EditText good_price=findViewById(R.id.price);
         EditText last_time=findViewById(R.id.last_time);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM月dd日HH:mm");
         Date curDate = new Date(System.currentTimeMillis());
+        FusedLocationProviderClient Client = LocationServices.getFusedLocationProviderClient(this);
+        Client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+
+                locations = location.getLatitude()+","+location.getLongitude();
+            }
+        });
 
         HashMap<String,Object> hashMap = new HashMap<>();
-        hashMap.put("address",locations.locationlist);
+        hashMap.put("address",locations);
         hashMap.put("good_distribution",good_distribution.getText().toString());
         hashMap.put("good_name",good_name.getText().toString());
         hashMap.put("good_price",good_price.getText().toString());
@@ -91,32 +103,13 @@ public class addGoods extends AppCompatActivity {
         hashMap.put("start_time",simpleDateFormat.format(curDate));
         hashMap.put("telephone","");
         hashMap.put("user_id",user.getUid());
-        database.setValue(hashMap);
+        database.child("commodity").push().setValue(hashMap);
+        Toast.makeText(this,"新增成功",Toast.LENGTH_SHORT);
+        finish();
     }
     @Override
     public void onBackPressed() {
         finish();
     }
-    class Locations implements LocationListener {
-        String locationlist;
-        @Override
-        public void onLocationChanged(Location location) {
-            locationlist = location.getLatitude()+","+location.getLongitude();
-        }
 
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    }
 }

@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.ccumis.food.fragment.Page1;
 import com.ccumis.food.fragment.Page2;
@@ -25,10 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
-public class home_page extends AppCompatActivity implements OnMapReadyCallback {
-
-    private GoogleMap mMap;
-
+public class home_page extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,40 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        final TextView appbar_title = findViewById(R.id.appbar_title);
+        appbar_title.setText("找剩食");
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 0:
+                        appbar_title.setText("找剩食");
+                        break;
+                    case 1:
+                        appbar_title.setText("找附近供應者");
+                        break;
+                    case 2:
+                        appbar_title.setText("預約及聯絡");
+                        break;
+                    case 3:
+                        appbar_title.setText("個人設定");
+                        break;
+                    default:
+                        appbar_title.setText("食刻");
+                        break;
+                }
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         tabLayout.getTabAt(0).setIcon(getResources().getDrawable(R.drawable.ic_home_24px));
         tabLayout.getTabAt(1).setIcon(getResources().getDrawable(R.drawable.ic_explore_24px));
         tabLayout.getTabAt(2).setIcon(getResources().getDrawable(R.drawable.ic_forum_24px));
@@ -71,14 +102,6 @@ public class home_page extends AppCompatActivity implements OnMapReadyCallback {
         startActivity(intent);
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        LatLng sydney = new LatLng(-34,151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
     public void Addgoods(View view){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         Intent intent = new Intent(this,addGoods.class);
