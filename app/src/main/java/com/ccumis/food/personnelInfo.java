@@ -190,6 +190,7 @@ private Button update;
                 df.update("nickN",edit1.getText().toString());
                 df.update("address",edit5.getText().toString());
                 df.update("phone",edit6.getText().toString());
+                Toast.makeText(personnelInfo.this,"更新資料成功",Toast.LENGTH_LONG).show();
                 finish();
             }
         }
