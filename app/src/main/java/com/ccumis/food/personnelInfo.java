@@ -104,6 +104,7 @@ private Button update;
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
 
+
                 }
 
 
@@ -319,9 +320,13 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
-
-
-
+                    if(edit1.getText().toString().isEmpty()){
+                        edit1.setError("不能有空白欄位");
+                    }if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
                 }
@@ -329,6 +334,14 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(edit1.getText().toString().isEmpty()){
+                        edit1.setError("不能有空白欄位");
+                    }if(change.isChecked()){
+                        edit2.setEnabled(false);
+                        edit3.setEnabled(false);
+                        edit4.setEnabled(false);
+                    }
+
 
                 }
 
@@ -365,13 +378,13 @@ private Button update;
                     edit4.setEnabled(false);
 
 
-
-
                 }
                 else if(!change.isChecked()){
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+
+
 
 
                 }
@@ -383,7 +396,11 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
-
+                    if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
 
@@ -392,6 +409,15 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(edit2.getText().toString().isEmpty()){
+                        edit2.setError("不能有空白欄位");
+                    }
+                    if(change.isChecked()){
+                        edit2.setEnabled(false);
+                        edit3.setEnabled(false);
+                        edit4.setEnabled(false);
+
+                    }
 
 
                 }
@@ -414,7 +440,9 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
-
+                    if(edit2.getText().toString().equals(edit3.getText().toString())){
+                        edit2.setError("原密碼錯誤");
+                    }
 
                 }
             }
@@ -428,12 +456,14 @@ private Button update;
                     edit4.setEnabled(false);
 
 
-
                 }
                 else if(!change.isChecked()){
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(edit3.getText().toString().isEmpty()){
+                        edit3.setError("不能有空欄位");
+                    }
 
 
                 }
@@ -445,9 +475,11 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
-
-
-
+                    if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
 
@@ -456,6 +488,18 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(edit3.getText().toString().isEmpty()){
+                        edit3.setError("不能有空白欄位");
+                    }
+                    if(edit3.getText().toString().equals(edit2.getText().toString())){
+                        edit3.setError("新密碼不能是原密碼");
+                    }if(change.isChecked()){
+                        edit2.setEnabled(false);
+                        edit3.setEnabled(false);
+                        edit4.setEnabled(false);
+                    }
+
+
 
 
                 }
@@ -478,6 +522,9 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(edit3.getText().toString().equals(edit2.getText().toString())){
+                        edit3.setError("新密碼不能是原來密碼");
+                    }
 
 
                 }
@@ -503,6 +550,7 @@ private Button update;
                     edit4.setEnabled(true);
 
 
+
                 }
             }
 
@@ -512,7 +560,11 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
-
+                    if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
 
@@ -522,6 +574,13 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(edit4.getText().toString().isEmpty()){
+                        edit4.setError("不能有空白欄位");
+                    }if(change.isChecked()){
+                        edit2.setEnabled(false);
+                        edit3.setEnabled(false);
+                        edit4.setEnabled(false);
+                    }
 
 
                 }
@@ -540,12 +599,17 @@ private Button update;
 
 
 
-
                 }
                 else if(!change.isChecked()){
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
+                    if(!edit4.getText().toString().equals(edit3.getText().toString())){
+                        edit4.setError("確認密碼不符");
+                    }
+                    if(edit4.getText().toString().equals(edit2.getText().toString())){
+                        edit4.setError("確認密碼不能是原密碼");
+                    }
 
 
                 }
@@ -577,10 +641,13 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
-
-
-
-
+                    if(edit5.getText().toString().isEmpty()){
+                        edit5.setError("不能有空白欄位");
+                    }if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
                 }
@@ -588,8 +655,10 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
-
-
+                }if(change.isChecked()){
+                    edit2.setEnabled(false);
+                    edit3.setEnabled(false);
+                    edit4.setEnabled(false);
                 }
 
 
@@ -627,9 +696,6 @@ private Button update;
                     edit4.setEnabled(false);
 
 
-
-
-
                 }
                else if(!change.isChecked()){
                     edit2.setEnabled(true);
@@ -647,6 +713,16 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
+                    edit2.setError(null);
+                    edit3.setError(null);
+                    edit4.setError(null);
+                    if(edit6.getText().toString().isEmpty()){
+                        edit6.setError("不能有空白欄位");
+                    }if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
                 }
@@ -654,8 +730,11 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
-
-
+                    if(change.isChecked()){
+                        edit2.setEnabled(false);
+                        edit3.setEnabled(false);
+                        edit4.setEnabled(false);
+                    }
                 }
 
 
@@ -667,7 +746,11 @@ private Button update;
                     edit2.setEnabled(false);
                     edit3.setEnabled(false);
                     edit4.setEnabled(false);
-
+                    if(!change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
 
                 }
@@ -675,7 +758,11 @@ private Button update;
                     edit2.setEnabled(true);
                     edit3.setEnabled(true);
                     edit4.setEnabled(true);
-
+                    if(change.isChecked()){
+                        edit2.setEnabled(true);
+                        edit3.setEnabled(true);
+                        edit4.setEnabled(true);
+                    }
 
                 }
 
