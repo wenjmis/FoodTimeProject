@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,6 +33,7 @@ public class registered_page2 extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth fAuth  = FirebaseAuth.getInstance();
     private Map<String,Object> data;
+    private Map<String,Object> shopdata;
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,50 +46,20 @@ public class registered_page2 extends AppCompatActivity {
 
         bundle = this.getIntent().getExtras();
         data = new HashMap<>();
+        shopdata =new HashMap<>();
         data.put("type",bundle.getInt("type"));
         data.put("realN",bundle.getString("realN"));
         data.put("nickN",bundle.getString("nickN"));
-        data.put("account",bundle.getString("account"));
+        data.put("GSP",bundle.getString("GSP"));
         data.put("mail",bundle.getString("mail"));
-        data.put("pwd",bundle.getString("pwd"));
         data.put("phone",bundle.getString("phone"));
         data.put("address",bundle.getString("address"));
-    }
-    public void done(View view){
-        CheckBox checkBox = findViewById(R.id.checkBox);
-        if(checkBox.isChecked()){
-            Intent intent = new Intent(this,MainActivity.class);
-            db.collection("User")
-                    .add(data)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+        shopdata.put("address",bundle.getString("comp_address_text"));
+        shopdata.put("name",bundle.getString("comp_name_text"));
+        shopdata.put("phone",bundle.getString("comp_phone_text"));
 
-                        }
-                    });
-            startActivity(intent);
-            registered_page2.this.finish();
-        }
-        else{
-            AlertDialog.Builder builder = new AlertDialog.Builder(registered_page2.this);
-
-            builder.setTitle("錯誤");
-            builder.setMessage("NMSL 看完還敢不打勾啊");
-            builder.setCancelable(true);
-            builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        }
     }
+
     @Override
     public void onBackPressed(){
         registered_page2.this.finish();
@@ -104,11 +76,40 @@ public class registered_page2 extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(registered_page2.this, "註冊成功", Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                        FirebaseUser user = fAuth.getCurrentUser();
+                        data.put("userId",user.getUid());
+                        if(bundle.getInt("type")==0){
+                            db.collection("User").document(user.getUid()).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(registered_page2.this, "成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            registered_page2.this.finish();
+                        }
+                        else if(bundle.getInt("type")==1){
+                            db.collection("User").document(user.getUid()).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(registered_page2.this, "成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            db.collection("Shop").document(user.getUid()).set(shopdata).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(registered_page2.this, "成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            registered_page2.this.finish();
+                        }
 
                     }
                     else {
@@ -116,6 +117,7 @@ public class registered_page2 extends AppCompatActivity {
                     }
                 }
             });
+
         }
         else{
             AlertDialog.Builder builder = new AlertDialog.Builder(registered_page2.this);

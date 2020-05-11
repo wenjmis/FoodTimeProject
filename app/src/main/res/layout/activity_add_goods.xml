@@ -18,7 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <TextView
@@ -45,15 +45,15 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/panel1"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/upload_image">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText6"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/good_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
@@ -64,15 +64,15 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/panel2"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/panel1">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText11"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/good_distribution"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
@@ -82,42 +82,71 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/panel3"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/panel2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText12"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/last_time"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
                     android:hint="剩餘時間"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
+            <RelativeLayout
+                android:id="@+id/panel4"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/panel3">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toStartOf="@+id/use_device_gps">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:ems="10"
+                        android:hint="地址"
+                        android:inputType="textPostalAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/use_device_gps"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_edit_location_black_24dp" />
+            </RelativeLayout>
             <Switch
                 android:id="@+id/chip2"
-                android:layout_width="200dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:text="是否有費用"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/panel3" />
+                app:layout_constraintTop_toBottomOf="@id/panel4" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/panel4"
-                android:layout_width="match_parent"
+                android:id="@+id/panel5"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chip2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText13"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
@@ -135,7 +164,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.25"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/panel4" />
+                app:layout_constraintTop_toBottomOf="@id/panel5"
+                android:onClick="submit_goods"/>
 
             <Button
                 android:id="@+id/cancel"
@@ -145,7 +175,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/panel4" />
+                app:layout_constraintTop_toBottomOf="@id/panel5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

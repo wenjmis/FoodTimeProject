@@ -83,8 +83,12 @@ public class Page3 extends Fragment {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot snapshot : task.getResult()){
                         Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"));
-                        if(room.getMenber_1().equals(firebaseUser.getUid()))
+                        if(room.getMenber_1().equals(firebaseUser.getUid())){
                         rooms.add(room);
+                        }
+                        else if(room.getMenber_2().equals(firebaseUser.getUid())){
+                            rooms.add(room);
+                        }
                     }
                     chatAdapter = new chatAdapter(getContext(),rooms);
                     recyclerView.setAdapter(chatAdapter);

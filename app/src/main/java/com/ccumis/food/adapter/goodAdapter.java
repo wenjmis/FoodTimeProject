@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ccumis.food.Goods_view;
 import com.ccumis.food.Model.commodity;
 import com.ccumis.food.R;
 import com.ccumis.food.chatroom;
@@ -51,9 +52,10 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent =  new Intent(context, chatroom.class);
+               Intent intent =  new Intent(context, Goods_view.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("receiver_id",commodity.user_id);
+                bundle.putString("good_name",commodity.good_name);
                intent.putExtras(bundle);
                context.startActivity(intent);
             }
