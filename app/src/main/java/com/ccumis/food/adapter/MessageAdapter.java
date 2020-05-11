@@ -57,6 +57,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.holder> 
     public void onBindViewHolder(@NonNull holder holder, int position) {
         Message message = user.get(position);
         holder.username.setText(message.msg);
+        if(!message.send_time.isEmpty()){
+            holder.messagetime.setText(message.send_time);
+        }
+        else
+        {
+            holder.messagetime.setText("");
+        }
+
 
     }
 
@@ -84,7 +92,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.holder> 
                 super(itemview);
 
                 messagetime=itemview.findViewById(R.id.chatroomtimetxt);
-                messagetime.setText(java.text.DateFormat.getDateTimeInstance().format(new Date()));
                 username = itemview.findViewById(R.id.show_message);
                 profile_image = itemview.findViewById(R.id.profile_image);
 

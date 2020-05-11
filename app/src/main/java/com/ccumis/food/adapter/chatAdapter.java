@@ -44,7 +44,7 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ViewHolder> {
         if (room.getMenber_1().equals(firebaseUser.getUid())){
             holder.username.setText(room.getMenber_2());
         }
-        else{
+        else if(room.getMenber_2().equals(firebaseUser.getUid())){
             holder.username.setText(room.getMenber_1());
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {

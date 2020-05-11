@@ -37,7 +37,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.core.FirestoreClient;
 
 import java.lang.ref.Reference;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -79,6 +81,7 @@ public class chatroom extends AppCompatActivity {
                     hashMap.put("msg",editText.getText().toString());
                     hashMap.put("receiver_id",reveiver_id);
                     hashMap.put("sender_id",firebaseUser.getUid());
+                    hashMap.put("send_time",DateFormat.getDateTimeInstance().format(new Date()));
                     databaseReference.child("Message").push().setValue(hashMap);
                     editText.setText("");
 
@@ -122,10 +125,6 @@ public class chatroom extends AppCompatActivity {
                             Map<String ,Object> hashMap = new HashMap<>();
                             hashMap.put("menber_1",firebaseUser);
                             hashMap.put("menber_2",reveiver_id);
-                            firebaseFirestore.collection("Room").add(hashMap);
-                            hashMap.clear();
-                            hashMap.put("menber_2",firebaseUser);
-                            hashMap.put("menber_1",reveiver_id);
                             firebaseFirestore.collection("Room").add(hashMap);
                         }
                     }
