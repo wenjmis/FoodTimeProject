@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import com.ccumis.food.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.holder> {
@@ -25,7 +28,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.holder> 
     private FirebaseUser firebaseUser;
     private Context context;
     private List<Message> user;
-
 
     private String imageurl;
 
@@ -77,10 +79,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.holder> 
 
             public TextView username;
             public ImageView profile_image;
+            public TextView messagetime;
             public holder(View itemview){
                 super(itemview);
+
+                messagetime=itemview.findViewById(R.id.chatroomtimetxt);
+                messagetime.setText(java.text.DateFormat.getDateTimeInstance().format(new Date()));
                 username = itemview.findViewById(R.id.show_message);
                 profile_image = itemview.findViewById(R.id.profile_image);
+
             }
+
     }
 }
