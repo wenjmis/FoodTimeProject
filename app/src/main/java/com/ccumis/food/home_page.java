@@ -77,7 +77,7 @@ public class home_page extends AppCompatActivity {
             }
         });
         tabLayout.getTabAt(0).setIcon(getResources().getDrawable(R.drawable.ic_home_24px));
-        tabLayout.getTabAt(1).setIcon(getResources().getDrawable(R.drawable.ic_explore_24px));
+        tabLayout.getTabAt(1).setIcon(getResources().getDrawable(R.drawable.ic_place_black_24dp));
         tabLayout.getTabAt(2).setIcon(getResources().getDrawable(R.drawable.ic_forum_24px));
         tabLayout.getTabAt(3).setIcon(getResources().getDrawable(R.drawable.ic_settings_applications_24px));
 
