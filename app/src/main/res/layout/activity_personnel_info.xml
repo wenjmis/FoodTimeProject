@@ -11,174 +11,146 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="125dp"
         android:text="修改個人資訊"
         android:textColor="#F8CBAD"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_weight="1"
-        android:text="真實姓名"
-        android:textColor="#C55A11"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.45" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView9"
-        app:layout_constraintVertical_bias="0.61">
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.05">
 
-        <LinearLayout
-            android:id="@+id/L1"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="top"
+            android:gravity="top"
+            android:text="真實姓名："
+            android:textColor="#C55A11"
+            android:textSize="18sp" />
 
-            app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="top"
+            android:text="名字"
+            android:textSize="20sp" />
+    </LinearLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/L1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="暱稱"
-                android:textColorHint="#C55A11">
-
+                android:textColorHint="#C55A11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nickname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/L2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:hint="原來密碼"
+            android:textColorHint="#C55A11"
+            app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/L1"
-            app:layout_constraintVertical_bias="0.0">
-
-            <com.google.android.material.textfield.TextInputLayout
+            app:layout_constraintTop_toBottomOf="@+id/pwdChg">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/oripwd"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="原來密碼"
-                android:textColorHint="#C55A11">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/oripwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <Switch
-                    android:id="@+id/pwdChg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="不更改密碼" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/L3"
-            android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <Switch
+            android:id="@+id/pwdChg"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/L2">
-
+            android:text="更改密碼"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/L1"
+            app:layout_constraintRight_toRightOf="parent"/>
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/L3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="新密碼"
-                android:textColorHint="#C55A11">
-
+                android:textColorHint="#C55A11"
+                app:passwordToggleEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/L2">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/newpwd"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:enabled="false"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/L4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:hint="確認密碼"
+            android:textColorHint="#C55A11"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/L3">
-
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/conpwd"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="確認密碼"
-                android:textColorHint="#C55A11">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/conpwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+                android:layout_height="wrap_content"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/L5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/L4"
-            tools:layout_editor_absoluteX="350dp">
+            android:hint="居住地址"
+            android:textColorHint="#C55A11"
+            app:layout_constraintTop_toBottomOf="@+id/L4">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="居住地址"
-                android:textColorHint="#C55A11">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/raddr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/button7"
             android:layout_width="wrap_content"
@@ -192,7 +164,6 @@
             app:layout_constraintStart_toEndOf="@+id/button4"
             app:layout_constraintTop_toBottomOf="@+id/L6"
             app:layout_constraintVertical_bias="1.0" />
-
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
@@ -204,40 +175,19 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/L6"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <LinearLayout
+            app:layout_constraintVertical_bias="0.0" />
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/L6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/L5">
-
-            <com.google.android.material.textfield.TextInputLayout
+            android:hint="聯絡電話"
+            android:textColorHint="#C55A11"
+            app:layout_constraintTop_toBottomOf="@+id/L5">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tel"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="聯絡電話"
-                android:textColorHint="#C55A11">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="顯示密碼"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/L6" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

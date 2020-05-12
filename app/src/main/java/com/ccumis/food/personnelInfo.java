@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -25,6 +26,7 @@ import com.ccumis.food.Model.User;
 import com.ccumis.food.fragment.Page4;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthCredential;
@@ -43,28 +45,14 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class personnelInfo extends AppCompatActivity {
-private View v;
-private CheckBox checkBox;
-private Button back;
-private Button update;
-     EditText edit1;
-     EditText edit2;
-     EditText edit3 ;
-     EditText edit4;
-     EditText edit5;
-     EditText edit6;
+     EditText nickname;
+     EditText oripwd;
+     EditText newpwd;
+     EditText conpwd;
+     EditText address;
+     EditText tel;
      TextView realName;
      Switch change;
-     String input1;
-     String input2;
-     String input3;
-     String input4;
-     String input5;
-     String input6;
-
-
-
-     String doc;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,78 +60,35 @@ private Button update;
 
         change = (Switch)findViewById(R.id.pwdChg) ;
         realName = (TextView)findViewById(R.id.textView11) ;
-        edit1 = (EditText)findViewById(R.id.nickname);
-        edit2 = (EditText)findViewById(R.id.oripwd);
-        edit3 = (EditText)findViewById(R.id.newpwd);
-        edit4 = (EditText)findViewById(R.id.conpwd);
-        edit5 = (EditText)findViewById(R.id.raddr);
-        edit6 = (EditText)findViewById(R.id.tel);
-        update = (Button)findViewById(R.id.button7) ;
-        back = (Button)findViewById(R.id.button4);
-        checkBox = (CheckBox)findViewById(R.id.checkBox3);
-
-
-
-
-
-
+        nickname = (EditText)findViewById(R.id.nickname);
+        oripwd = (EditText)findViewById(R.id.oripwd);
+        newpwd = (EditText)findViewById(R.id.newpwd);
+        conpwd = (EditText)findViewById(R.id.conpwd);
+        address = (EditText)findViewById(R.id.address);
+        tel = (EditText)findViewById(R.id.tel);
         getInfo();
         change.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-                }
                 if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
+                    oripwd.setEnabled(false);
+                    newpwd.setEnabled(false);
+                    conpwd.setEnabled(false);
                 }
-
-
-
+                else {
+                    oripwd.setEnabled(true);
+                    newpwd.setEnabled(true);
+                    conpwd.setEnabled(true);
+                }
             }
 
 
         });
-        writeInfo();
-
-        edit2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        edit3.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        edit4.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(checkBox.isChecked()){
-                    edit2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    edit3.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    edit4.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else{
-                    edit2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    edit3.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    edit4.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
-            }
-        });
-
-
-
-
-
-
     }
 
 
 
     public void getInfo(){
-
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("User").document(firebaseUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -153,9 +98,9 @@ private Button update;
                         User user = new User(task.getResult().getString("realN"),task.getResult().getString("nickN"), task.getResult().getString("mail"), task.getResult().getString("phone"), task.getResult().getString("address"), task.getResult().getString("userId"));
                         if(user.getUId().equals(firebaseUser.getUid())){
                             realName.setText(user.getRealN());
-                            edit1.setText(user.getNickN());
-                            edit5.setText(user.getAddress());
-                            edit6.setText(user.getPhone());
+                            nickname.setText(user.getNickN());
+                            address.setText(user.getAddress());
+                            tel.setText(user.getPhone());
                         }
                 }
 
@@ -165,609 +110,108 @@ private Button update;
     }
 
 
-    public void updateInfo(View view){
-        final EditText[]each ={edit1,edit2,edit3,edit4,edit5,edit6};
-        final EditText[] each1 = {edit1,edit5,edit6};
-
-        if(change.isChecked()) {
-            edit2.setEnabled(false);
-            edit3.setEnabled(false);
-            edit4.setEnabled(false);
-            if(edit1.getText().toString().isEmpty()||edit5.getText().toString().isEmpty()||edit6.getText().toString().isEmpty()){
-                for (int i = 0; i < each1.length; i++) {
-                    EditText currentEdit1 = each1[i];
-                    if (currentEdit1.getText().toString().isEmpty()) {
-                        each1[i].setError("不能有空白欄位");
-                    }
-                }
+    public void updateInfo(View view) {
+        if(!change.isChecked()){
+            //判斷空值
+            if(nickname.getText().toString().isEmpty()){
+                nickname.setError("不能為空值");
             }
-
-            else if(!edit1.getText().toString().isEmpty()&&!edit5.getText().toString().isEmpty()&&!edit6.getText().toString().isEmpty()){
-
-                final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                DocumentReference df = firestore.collection("User").document(firebaseUser.getUid());
-                df.update("nickN",edit1.getText().toString());
-                df.update("address",edit5.getText().toString());
-                df.update("phone",edit6.getText().toString());
-                Toast.makeText(personnelInfo.this,"更新資料成功",Toast.LENGTH_LONG).show();
+            else if(address.getText().toString().isEmpty()){
+                address.setError("不能為空值");
+            }
+            else if(tel.getText().toString().isEmpty()){
+                tel.setError("不能為空值");
+            }
+            else
+            {
+                submit_to_firestore();
                 finish();
             }
         }
-        else if(!change.isChecked()){
-            edit2.setEnabled(true);
-            edit3.setEnabled(true);
-            edit4.setEnabled(true);
-            if(edit1.getText().toString().isEmpty()||edit2.getText().toString().isEmpty()||edit3.getText().toString().isEmpty()||
-                    edit4.getText().toString().isEmpty()||edit5.getText().toString().isEmpty()||edit6.getText().toString().isEmpty()){
-                for(int i=0;i<each.length;i++){
-                    EditText currentEdit = each[i];
-                    if(currentEdit.getText().toString().isEmpty()){
-                        each[i].setError("不能有空白欄位");
-                    }
+        else {
+            //判斷空值
+            if(nickname.getText().toString().isEmpty()){
+                nickname.setError("不能為空值");
+            }
+            else if(address.getText().toString().isEmpty()){
+                address.setError("不能為空值");
+            }
+            else if(tel.getText().toString().isEmpty()){
+                tel.setError("不能為空值");
+            }
+            else if(oripwd.getText().toString().isEmpty()){
+                oripwd.setError("不能為空值");
+            }
+            else if(newpwd.getText().toString().isEmpty()){
+                newpwd.setError("不能為空值");
+            }
+            else if(conpwd.getText().toString().isEmpty()){
+                conpwd.setError("不能為空值");
+            }
+            else{
+                //新密碼重複驗證
+                if(!conpwd.getText().toString().equals(newpwd.getText().toString())){
+                    conpwd.setError("與新密碼不符");
+                }
+                else {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(),oripwd.getText().toString());
+                    user.reauthenticate(credential)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(personnelInfo.this,"原密碼正確",Toast.LENGTH_LONG);
+                                        change_passward();
+                                        submit_to_firestore();
+                                        finish();
+                                    }
+                                    else {
+                                        Log.d("錯誤","錯誤碼為"+task.getException().getMessage());
+                                        oripwd.setError("原密碼錯誤");
+                                    }
+                                }
+                            });
+
                 }
             }
-             else if(!edit1.getText().toString().isEmpty()&&!edit2.getText().toString().isEmpty()||!edit3.getText().toString().isEmpty()
-                     ||!edit4.getText().toString().isEmpty()&&!edit5.getText().toString().isEmpty()&&!edit6.getText().toString().isEmpty()){
-                 if(!edit3.getText().toString().equals(edit4.getText().toString())){
-                     edit4.setError("密碼不符合，請再輸入一次");
-                 }
-                 else{
-                     final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                     DocumentReference df = firestore.collection("User").document(firebaseUser.getUid());
-                     df.update("nickN",edit1.getText().toString());
-                     df.update("address",edit5.getText().toString());
-                     df.update("phone",edit6.getText().toString());
-                     finish();
-                     firebaseUser.updatePassword(edit3.getText().toString()).addOnFailureListener(new OnFailureListener() {
-                         @Override
-                         public void onFailure(@NonNull Exception e) {
-                             Toast.makeText(personnelInfo.this,"更新失敗，請稍後再試!",Toast.LENGTH_LONG).show();
-                         }
-                     });
-                 }
-             }
-         }
-
-
-        /*else{
-            final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-            DocumentReference df = firestore.collection("User").document(firebaseUser.getUid());
-            df.update("nickN",edit1.getText().toString());
-            df.update("address",edit5.getText().toString());
-            df.update("phone",edit6.getText().toString());
-            finish();
-        }*/
-        change.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-
-
-
-
-
-    /*   final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();*/
-
-
-       /* if(!edit3.getText().toString().equals(edit4.getText().toString())){
-            edit4.setError("密碼不符合，請再輸入一次");
-
-        }*/
-      /*  DocumentReference df = firestore.collection("User").document(firebaseUser.getUid());
-        df.update("nickN",edit1.getText().toString());
-        df.update("address",edit5.getText().toString());
-        df.update("phone",edit6.getText().toString());*/
-
-
-
-       /* firebaseUser.updatePassword(edit3.getText().toString()).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(personnelInfo.this,"更新失敗，請稍後再試!",Toast.LENGTH_LONG).show();
-            }
-        });*/
-
-
-
-         /*finish();*/
-
-
+        }
     }
 
+    private void change_passward() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUser.updatePassword(newpwd.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(personnelInfo.this,"修改成功",Toast.LENGTH_LONG);
+                }
+                else{
+                    Toast.makeText(personnelInfo.this,task.getException().getMessage(),Toast.LENGTH_LONG);
+                }
+            }
+        });
+    }
 
+    private void submit_to_firestore() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference df = firestore.collection("User").document(firebaseUser.getUid());
+        df.update("nickN", nickname.getText().toString());
+        df.update("address", address.getText().toString());
+        df.update("phone", tel.getText().toString());
+        Toast.makeText(personnelInfo.this,"修改成功",Toast.LENGTH_LONG);
+    }
 
 
     public void goBack(View view){
         finish();
     }
 
-
-    public void onBackPressed(View view) {
+    @Override
+    public void onBackPressed() {
 
         finish();
     }
 
-    public void writeInfo(){
-
-        final EditText[] each2 = {edit2,edit3,edit4};
-        edit1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    if(edit1.getText().toString().isEmpty()){
-                        edit1.setError("不能有空白欄位");
-                    }if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit1.getText().toString().isEmpty()){
-                        edit1.setError("不能有空白欄位");
-                    }if(change.isChecked()){
-                        edit2.setEnabled(false);
-                        edit3.setEnabled(false);
-                        edit4.setEnabled(false);
-                    }
-
-
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
-
-                }
-
-            }
-        });
-        edit2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
-
-
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit2.getText().toString().isEmpty()){
-                        edit2.setError("不能有空白欄位");
-                    }
-                    if(change.isChecked()){
-                        edit2.setEnabled(false);
-                        edit3.setEnabled(false);
-                        edit4.setEnabled(false);
-
-                    }
-
-
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit2.getText().toString().equals(edit3.getText().toString())){
-                        edit2.setError("原密碼錯誤");
-                    }
-
-                }
-            }
-        });
-        edit3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit3.getText().toString().isEmpty()){
-                        edit3.setError("不能有空欄位");
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit3.getText().toString().isEmpty()){
-                        edit3.setError("不能有空白欄位");
-                    }
-                    if(edit3.getText().toString().equals(edit2.getText().toString())){
-                        edit3.setError("新密碼不能是原密碼");
-                    }if(change.isChecked()){
-                        edit2.setEnabled(false);
-                        edit3.setEnabled(false);
-                        edit4.setEnabled(false);
-                    }
-
-
-
-
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit3.getText().toString().equals(edit2.getText().toString())){
-                        edit3.setError("新密碼不能是原來密碼");
-                    }
-
-
-                }
-
-            }
-        });
-        edit4.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
-
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(edit4.getText().toString().isEmpty()){
-                        edit4.setError("不能有空白欄位");
-                    }if(change.isChecked()){
-                        edit2.setEnabled(false);
-                        edit3.setEnabled(false);
-                        edit4.setEnabled(false);
-                    }
-
-
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(!edit4.getText().toString().equals(edit3.getText().toString())){
-                        edit4.setError("確認密碼不符");
-                    }
-                    if(edit4.getText().toString().equals(edit2.getText().toString())){
-                        edit4.setError("確認密碼不能是原密碼");
-                    }
-
-
-                }
-
-            }
-        });
-        edit5.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
-                }
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    if(edit5.getText().toString().isEmpty()){
-                        edit5.setError("不能有空白欄位");
-                    }if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-                }
-               else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                }if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-
-
-
-
-                }
-               else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
-                }
-
-            }
-        });
-        edit6.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-
-
-                }
-               else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-
-
-                }
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    edit2.setError(null);
-                    edit3.setError(null);
-                    edit4.setError(null);
-                    if(edit6.getText().toString().isEmpty()){
-                        edit6.setError("不能有空白欄位");
-                    }if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(change.isChecked()){
-                        edit2.setEnabled(false);
-                        edit3.setEnabled(false);
-                        edit4.setEnabled(false);
-                    }
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(change.isChecked()){
-                    edit2.setEnabled(false);
-                    edit3.setEnabled(false);
-                    edit4.setEnabled(false);
-                    if(!change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-
-                }
-                else if(!change.isChecked()){
-                    edit2.setEnabled(true);
-                    edit3.setEnabled(true);
-                    edit4.setEnabled(true);
-                    if(change.isChecked()){
-                        edit2.setEnabled(true);
-                        edit3.setEnabled(true);
-                        edit4.setEnabled(true);
-                    }
-
-                }
-
-            }
-        });
-    }
 }

@@ -35,7 +35,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class addGoods extends AppCompatActivity {
-    private String locations;
+    private String locations="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,26 +79,34 @@ public class addGoods extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
+        EditText address = findViewById(R.id.address);
         EditText good_distribution=findViewById(R.id.good_distribution);
         EditText good_name=findViewById(R.id.good_name);
         EditText good_price=findViewById(R.id.price);
         EditText last_time=findViewById(R.id.last_time);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM月dd日HH:mm");
         Date curDate = new Date(System.currentTimeMillis());
-        FusedLocationProviderClient Client = LocationServices.getFusedLocationProviderClient(this);
+        /*FusedLocationProviderClient Client = LocationServices.getFusedLocationProviderClient(this);
         Client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
 
                 locations = location.getLatitude()+","+location.getLongitude();
             }
-        });
+        });*/
+        locations = address.getText().toString();
 
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("address",locations);
         hashMap.put("good_distribution",good_distribution.getText().toString());
         hashMap.put("good_name",good_name.getText().toString());
-        hashMap.put("good_price",good_price.getText().toString());
+        if(good_price.getText().toString().isEmpty()){
+            hashMap.put("good_price",good_price.getText().toString());
+        }
+        else {
+            hashMap.put("good_price","0");
+        }
+
         hashMap.put("last_time",last_time.getText().toString());
         hashMap.put("start_time",simpleDateFormat.format(curDate));
         hashMap.put("telephone","");
