@@ -16,8 +16,10 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Goods_view"/>
-        <activity android:name=".personnelInfo" />
+        <activity android:name=".Goods_view"
+            android:screenOrientation="nosensor" />
+        <activity android:name=".personnelInfo"
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".addGoods"
             android:screenOrientation="nosensor"

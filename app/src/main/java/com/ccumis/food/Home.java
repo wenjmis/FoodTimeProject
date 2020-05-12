@@ -18,9 +18,6 @@ public class Home extends Application {
            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
            startActivity(intent);
         }
-        else {
-            startActivity(new Intent(this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-        }
     }
 
 }
