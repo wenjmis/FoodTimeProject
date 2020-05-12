@@ -123,7 +123,7 @@ public class registered_page2 extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(registered_page2.this);
 
             builder.setTitle("錯誤");
-            builder.setMessage("NMSL 看完還敢不打勾啊");
+            builder.setMessage("請詳閱聲明後並於左下角打勾再送出資料");
             builder.setCancelable(true);
             builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
                 @Override

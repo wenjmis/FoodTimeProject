@@ -53,7 +53,7 @@ public class registered_page extends AppCompatActivity {
             Toast.makeText(this, "申請內容尚未完成請勿跳過", Toast.LENGTH_LONG).show();
             return  false;
         }
-        /*else if(!pwd.equals(pwd2)){
+        else if(!pwd.equals(pwd2)){
             Toast.makeText(this, "兩個密碼不符合", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -71,7 +71,7 @@ public class registered_page extends AppCompatActivity {
         {
             Toast.makeText(this,"電話號碼異常",Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
         else {
             return true;
@@ -80,11 +80,10 @@ public class registered_page extends AppCompatActivity {
 
 
     }
-    /*設計一個程式去資料庫確認目前的註冊者資料並沒有重複
-    public bolean checkusername(string realN){
+    //Todo design a method to check weather the register info exist
+    /*public bolean checkusername(string realN){
 
-    }
-     */
+    }*/
 
     public void go(View view){
         CheckBox checkBox = findViewById(R.id.checkBox2);
