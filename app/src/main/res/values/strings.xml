@@ -1,15 +1,14 @@
 <resources>
     <string name="app_name">food</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="notice">接下來您將要開始完成「食刻」(以下將以本平台代稱)之帳號申請，申請過程中您的資料將不會外流給其他廠商，僅作為本平台紀錄以及遇到糾紛時作為裁定的依據，請放心填入資料。</string>
-    <string name="tab1">Home</string>
-    <string name="tab2">Explore</string>
-    <string name="tab3">Forum</string>
-    <string name="tab4">Setting</string>
-    <string name="pwd">密碼</string>
+    <string name="tab1">主頁</string>
+    <string name="tab2">探索</string>
+    <string name="tab3">聯絡</string>
+    <string name="tab4">設定</string>
+    <string name="pwd">密碼：</string>
     <string name="logIn">登入</string>
-    <string name="createAcc">註冊帳號</string>
+    <string name="createAcc">▶註冊帳號</string>
     <string name="fgtPwd">忘記密碼</string>
     <string name="newShop">商家註冊</string>
     <string name="shopName">店名</string>
@@ -28,6 +27,6 @@
     <string name="type">種類</string>
     <string name="remTime">剩餘時間</string>
     <string name="uploader">上傳者</string>
-    <string name="mail">信箱</string>
+    <string name="mail">信箱：</string>
     <string name="logOut">登出</string>
 </resources>

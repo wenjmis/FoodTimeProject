@@ -24,4 +24,9 @@
     <string name="uploader">Uploader</string>
     <string name="mail">Email</string>
     <string name="logOut">Log Out</string>
+    <string name="tab1">home</string>
+    <string name="tab2">explore</string>
+    <string name="tab3">forum</string>
+    <string name="tab4">setting</string>
+    <string name="notice">Next, you will start to complete the application of the account of \"food\" (hereinafter referred to as the platform). During the application process, your data will not be outflowed to other manufacturers. It is only used as a record of the platform and as a basis for ruling when encountering disputes. , Please fill in the information with confidence.</string>
 </resources>
