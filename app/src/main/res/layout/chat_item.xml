@@ -10,18 +10,30 @@
         android:id="@+id/profile_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/profile_image"
-        android:layout_toEndOf="@id/profile_image"
-        android:layout_marginLeft="10dp"
-        android:text="who's message"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@id/profile_image"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text="who's message"
+        android:textColor="#000000"
         android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/userid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignStart="@+id/username"
+        android:layout_alignTop="@id/username"
+        android:layout_alignEnd="@+id/username"
+        android:layout_alignBottom="@+id/username"
+        android:enabled="false"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>
