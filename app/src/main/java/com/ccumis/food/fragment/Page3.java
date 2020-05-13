@@ -82,7 +82,7 @@ public class Page3 extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot snapshot : task.getResult()){
-                        Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"));
+                        Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"),snapshot.getString("menber_1_name"),snapshot.getString("menber_2_name"),snapshot.getString("good_name"));
                         if(room.getMenber_1().equals(firebaseUser.getUid())){
                         rooms.add(room);
                         }

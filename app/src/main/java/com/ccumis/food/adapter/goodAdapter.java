@@ -2,11 +2,14 @@ package com.ccumis.food.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,10 @@ import com.ccumis.food.Goods_view;
 import com.ccumis.food.Model.commodity;
 import com.ccumis.food.R;
 import com.ccumis.food.chatroom;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.List;
 
@@ -38,6 +45,7 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         final commodity commodity = commodities.get(position);
+
         holder.good_name.setText(commodity.good_name);
         holder.good_distribution.setText(commodity.good_distribution);
         holder.last_time.setText(commodity.last_time);
@@ -47,17 +55,30 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
         }
         else
             holder.category.setText("未提供");
-        holder.username.setText(commodity.user_id);
 
+        if(commodity.user_id.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+            holder.username.setText("你自己");
+            holder.background.setBackgroundColor(Color.WHITE);
+        }
+        else {
+            holder.username.setText(commodity.name);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent =  new Intent(context, Goods_view.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("receiver_id",commodity.user_id);
-                bundle.putString("good_name",commodity.good_name);
-               intent.putExtras(bundle);
-               context.startActivity(intent);
+            Intent intent =  new Intent(context, Goods_view.class);
+            Bundle bundle = new Bundle();
+
+            bundle.putString("address",commodity.address);
+            bundle.putString("good_distribution",commodity.good_distribution);
+            bundle.putString("good_name",commodity.good_name);
+            bundle.putString("receiver_id",commodity.user_id);
+            bundle.putString("good_price",commodity.good_price);
+            bundle.putString("last_time",commodity.last_time);
+            bundle.putString("name",commodity.name);
+
+            intent.putExtras(bundle);
+            context.startActivity(intent);
             }
         });
     }
@@ -71,6 +92,7 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView username,good_name,last_time,good_distribution,category;
         public ImageView profile_image;
+        public RelativeLayout background;
         public ViewHolder(View interview){
             super(interview);
             username = interview.findViewById(R.id.username);
@@ -79,6 +101,7 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
             last_time = interview.findViewById(R.id.last_time);
             good_distribution = interview.findViewById(R.id.good_distribution);
             category = interview.findViewById(R.id.category);
+            background = interview.findViewById(R.id.background);
         }
     }
 }

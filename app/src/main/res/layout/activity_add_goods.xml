@@ -37,8 +37,8 @@
                 android:id="@+id/upload_image"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:background="@color/cardview_dark_background"
-                android:src="@drawable/ic_add_white_24dp"
+                android:background="#66000000"
+                android:src="@drawable/ic_add_a_photo_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -160,12 +160,12 @@
                 android:id="@+id/create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="submit_goods"
                 android:text="新增"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.25"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/panel5"
-                android:onClick="submit_goods"/>
+                app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
             <Button
                 android:id="@+id/cancel"
@@ -175,7 +175,26 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/panel5" />
+                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:text="是否以商家身分上架"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/panel5" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/cancel"
+                app:layout_constraintStart_toEndOf="@+id/create"
+                app:layout_constraintTop_toBottomOf="@+id/switch1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

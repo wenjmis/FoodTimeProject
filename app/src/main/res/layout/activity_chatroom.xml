@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chatroom">
+    tools:context=".chatroom"
+    android:background="#000000">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_alignParentTop="true">
-
+        android:layout_alignParentTop="true"
+        android:background="#F8CCAE">
         <TextView
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="TextView" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -23,24 +24,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/display_msg"
-        android:layout_above="@+id/send_Text"
+        android:layout_above="@+id/send_panel"
         android:layout_below="@+id/appBarLayout">
     </androidx.recyclerview.widget.RecyclerView>
-
-    <ImageButton
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/send_panel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/display_msg"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_send_black_24dp" />
+        android:background="#F8CCAE">
 
-    <EditText
+        <TextView
+            android:id="@+id/current_name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            android:enabled="false"
+            android:layout_alignParentRight="true" />
+
+        <ImageButton
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_send_black_24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+        <EditText
         android:id="@+id/send_Text"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/send" />
+    </RelativeLayout>
+
+
+
+
 
 </RelativeLayout>

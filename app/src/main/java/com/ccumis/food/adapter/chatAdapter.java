@@ -16,14 +16,20 @@ import com.ccumis.food.Model.Room;
 import com.ccumis.food.chatroom;
 import com.ccumis.food.Model.Message;
 import com.ccumis.food.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
 public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ViewHolder> {
     private Context context;
     private List<Room> rooms;
+    private String temp;
+
 
     public chatAdapter(Context context, List<Room> rooms) {
         this.context = context;
@@ -40,24 +46,32 @@ public class chatAdapter extends RecyclerView.Adapter<chatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        Room room = rooms.get(position);
+        final Room room = rooms.get(position);
         if (room.getMenber_1().equals(firebaseUser.getUid())){
-            holder.username.setText(room.getMenber_2());
+
+            holder.username.setText(room.getMenber_2_name());
+            temp = room.getMenber_2();
+
         }
         else if(room.getMenber_2().equals(firebaseUser.getUid())){
-            holder.username.setText(room.getMenber_1());
+            holder.username.setText(room.getMenber_1_name());
+            temp = room.getMenber_1();
+
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(context, chatroom.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("receiver_id",holder.username.getText().toString());
+                bundle.putString("name",holder.username.getText().toString());
+                bundle.putString("receiver_id",temp);
+                bundle.putString("good_name",room.getGood_name());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

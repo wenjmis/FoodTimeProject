@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,9 +57,7 @@ public class Page1 extends Fragment {
                 commodities.clear();
                 for(DataSnapshot Snapshot : dataSnapshot.getChildren()){
                     commodity commodity = Snapshot.getValue(com.ccumis.food.Model.commodity.class);
-                    if(!commodity.user_id.equals(firebaseUser.getUid())){
                     commodities.add(commodity);
-                    }
                 }
                 goodAdapter = new goodAdapter(getContext(),commodities);
                 recyclerView.setAdapter(goodAdapter);

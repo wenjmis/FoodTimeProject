@@ -9,4 +9,5 @@ public class commodity {
     public String last_time;
     public String telephone;
     public String address;
+    public String name;
 }

@@ -8,16 +8,39 @@
     android:background="@drawable/pop_windows">
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/commodity_key"
+                android:layout_width="100dp"
+                android:layout_height="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <Button
+                android:id="@+id/complete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:enabled="false"
+                android:text="完成交易"
+                android:textSize="30sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address_edit" />
 
             <Button
                 android:id="@+id/button4"
@@ -35,13 +58,14 @@
                 android:id="@+id/imageView"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:background="#40000000"
                 app:layout_constraintBottom_toBottomOf="@+id/button4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/good_name"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/go" />
+                app:srcCompat="@drawable/ic_image_black_24dp" />
 
             <TextView
                 android:id="@+id/good_name"
@@ -57,69 +81,138 @@
                 android:id="@+id/last_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="剩餘時間"
+                android:text="剩餘時間："
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/good_name"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/last_time_edit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="@+id/last_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/last_time"
+                app:layout_constraintTop_toTopOf="@+id/last_time" />
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="上傳者"
+                android:text="上傳者："
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/last_time"
                 app:layout_constraintTop_toBottomOf="@+id/last_time"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/username_edit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:enabled="false"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="@+id/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/username"
+                app:layout_constraintTop_toTopOf="@+id/username" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="費用"
+                android:text="費用："
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/last_time"
                 app:layout_constraintTop_toBottomOf="@+id/username"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <EditText
+                android:id="@+id/price_edit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:enabled="false"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="@+id/price"
+                app:layout_constraintEnd_toEndOf="@+id/last_time_edit"
+                app:layout_constraintStart_toEndOf="@+id/price"
+                app:layout_constraintTop_toTopOf="@+id/price" />
+
             <TextView
                 android:id="@+id/good_distribution"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="簡介"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="簡介："
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/good_distribution_edit"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:gravity="top"
+                android:inputType="textPersonName"
+                android:text="簡介內容"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/good_distribution"
+                app:layout_constraintTop_toBottomOf="@+id/good_distribution" />
 
             <TextView
                 android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="地址"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址："
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/good_distribution"
+                app:layout_constraintTop_toBottomOf="@id/good_distribution_edit"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/address_edit"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:gravity="top"
+                android:inputType="textPersonName"
+                android:text="地址"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

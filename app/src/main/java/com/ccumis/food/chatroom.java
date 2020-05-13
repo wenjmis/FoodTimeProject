@@ -50,13 +50,16 @@ public class chatroom extends AppCompatActivity {
     List<Message> messages;
     RecyclerView recyclerView;
     DatabaseReference reference;
-
+    String good_name;
+    TextView current_name;
+    String target_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatroom);
         Intent intent = getIntent();
+        current_name = findViewById(R.id.current_name);
 
         recyclerView=findViewById(R.id.display_msg);
         recyclerView.setHasFixedSize(true);
@@ -65,9 +68,11 @@ public class chatroom extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayout);
 
         final String reveiver_id = intent.getExtras().getString("receiver_id");
+        good_name = intent.getExtras().getString("good_name");
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         TextView textView = findViewById(R.id.username);
-        textView.setText(reveiver_id);
+        target_name = intent.getExtras().getString("name");
+        textView.setText(target_name);
 
         final EditText editText = findViewById(R.id.send_Text);
 
@@ -82,9 +87,17 @@ public class chatroom extends AppCompatActivity {
                     hashMap.put("receiver_id",reveiver_id);
                     hashMap.put("sender_id",firebaseUser.getUid());
                     hashMap.put("send_time",DateFormat.getDateTimeInstance().format(new Date()));
-                    databaseReference.child("Message").push().setValue(hashMap);
+                    databaseReference.child("Message").child(good_name).push().setValue(hashMap);
                     editText.setText("");
 
+
+                    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                    firestore.collection("User").document(FirebaseAuth.getInstance().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            current_name.setText(task.getResult().getString("nickN"));
+                        }
+                    });
 
                     //附帶新增聊天室
                     createRoom(firebaseUser.getUid(),reveiver_id);
@@ -114,7 +127,7 @@ public class chatroom extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot snapshot : task.getResult()){
-                        Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"));
+                        Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"),snapshot.getString("menber_1_name"),snapshot.getString("menber_2_name"),snapshot.getString("good_name"));
                         if((room.getMenber_1().equals(firebaseUser) && room.getMenber_2().equals(reveiver_id))){
 
                         }
@@ -124,8 +137,11 @@ public class chatroom extends AppCompatActivity {
                         else {
                             Map<String ,Object> hashMap = new HashMap<>();
                             hashMap.put("menber_1",firebaseUser);
+                            hashMap.put("menber_1_name",current_name.getText().toString());
                             hashMap.put("menber_2",reveiver_id);
-                            firebaseFirestore.collection("Room").add(hashMap);
+                            hashMap.put("menber_2_name",target_name);
+                            hashMap.put("good_name",good_name);
+                            firebaseFirestore.collection("Room").document(good_name).set(hashMap);
                         }
                     }
                 }
@@ -138,7 +154,7 @@ public class chatroom extends AppCompatActivity {
 
     public void readMessage(final String myid, final String userid, final String imageurl){
         messages = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference("Message");
+        reference = FirebaseDatabase.getInstance().getReference("Message").child(good_name);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
