@@ -25,16 +25,16 @@
             android:textSize="28dp" />
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/refresh_layout"
         app:layout_constraintBottom_toTopOf="@id/tab_layout"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" >
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F3E5DD" />
+            android:background="#F3E5DD"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
@@ -46,7 +46,8 @@
         android:background="#F8CCAE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/refresh_layout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        app:tabIndicatorColor="#F8CCAE" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,7 @@ import com.google.firebase.firestore.core.FirestoreClient;
 
 import java.lang.ref.Reference;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -86,7 +87,8 @@ public class chatroom extends AppCompatActivity {
                     hashMap.put("msg",editText.getText().toString());
                     hashMap.put("receiver_id",reveiver_id);
                     hashMap.put("sender_id",firebaseUser.getUid());
-                    hashMap.put("send_time",DateFormat.getDateTimeInstance().format(new Date()));
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd HH:mm");
+                    hashMap.put("send_time",dateFormat.format(new Date()));
                     databaseReference.child("Message").child(good_name).push().setValue(hashMap);
                     editText.setText("");
 
