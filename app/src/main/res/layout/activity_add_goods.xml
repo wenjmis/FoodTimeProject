@@ -165,7 +165,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.25"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+                app:layout_constraintTop_toBottomOf="@+id/switch2" />
 
             <Button
                 android:id="@+id/cancel"
@@ -175,7 +175,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+                app:layout_constraintTop_toBottomOf="@+id/switch2" />
 
             <Switch
                 android:id="@+id/switch1"
@@ -186,6 +186,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/panel5" />
 
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:text="是否要經過pos 系統"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="0dp"
@@ -194,7 +203,7 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toStartOf="@+id/cancel"
                 app:layout_constraintStart_toEndOf="@+id/create"
-                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+                app:layout_constraintTop_toBottomOf="@+id/switch2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
