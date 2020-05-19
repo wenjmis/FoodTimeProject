@@ -130,10 +130,10 @@ public class chatroom extends AppCompatActivity {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot snapshot : task.getResult()){
                         Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"),snapshot.getString("menber_1_name"),snapshot.getString("menber_2_name"),snapshot.getString("good_name"));
-                        if((room.getMenber_1().equals(firebaseUser) && room.getMenber_2().equals(reveiver_id))){
+                        if((room.getMenber_1().equals(firebaseUser) && room.getMenber_2().equals(reveiver_id) && room.getGood_name().equals(good_name))){
 
                         }
-                        else if((room.getMenber_1().equals(reveiver_id) && room.getMenber_2().equals(firebaseUser))){
+                        else if((room.getMenber_1().equals(reveiver_id) && room.getMenber_2().equals(firebaseUser) && room.getGood_name().equals(good_name))){
 
                         }
                         else {
