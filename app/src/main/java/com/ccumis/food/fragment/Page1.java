@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,9 +31,10 @@ import java.util.List;
 
 
 public class Page1 extends Fragment {
-    private goodAdapter goodAdapter;
+    private  goodAdapter goodAdapter;
     private List<commodity> commodities;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout refresh_layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,12 +45,19 @@ public class Page1 extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         commodities = new ArrayList<>();
-
-        readGoods();
+        refresh_layout = view.findViewById(R.id.refresh_layout);
+        refresh_layout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                list_Goods();
+                refresh_layout.setRefreshing(false);
+            }
+        });
+        list_Goods();
         return view;
     }
 
-    private void readGoods() {
+    private void list_Goods() {
         final FirebaseUser firebaseUser =  FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("commodity");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

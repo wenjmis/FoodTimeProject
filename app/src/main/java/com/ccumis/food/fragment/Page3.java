@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,13 +45,10 @@ import java.util.Set;
 
 public class Page3 extends Fragment {
 
-    //ArrayList<String> list =new ArrayList<>();
-    //ArrayAdapter<String> adapter;
-    //ListView listView;
-
     private chatAdapter chatAdapter;
     private List<Room> rooms;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout refresh_layout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,8 +67,18 @@ public class Page3 extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         rooms = new ArrayList<>();
 
-        readRoom();
 
+
+        refresh_layout = view.findViewById(R.id.refresh_layout);
+        refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                readRoom();
+                refresh_layout.setRefreshing(false);
+            }
+        });
+
+        readRoom();
         return view;
     }
 
@@ -82,6 +90,7 @@ public class Page3 extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot snapshot : task.getResult()){
+                        rooms.clear();
                         Room room = new Room(snapshot.getString("menber_1"),snapshot.getString("menber_2"),snapshot.getString("menber_1_name"),snapshot.getString("menber_2_name"),snapshot.getString("good_name"));
                         if(room.getMenber_1().equals(firebaseUser.getUid())){
                         rooms.add(room);

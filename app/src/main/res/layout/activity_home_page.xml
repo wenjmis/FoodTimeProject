@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F8CCAE"
-        app:layout_constraintBottom_toTopOf="@+id/refresh_layout"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
@@ -24,18 +24,13 @@
             android:text="食刻"
             android:textSize="28dp" />
     </com.google.android.material.appbar.AppBarLayout>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/tab_layout"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#F3E5DD"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:layout_height="0dp"
+            android:background="#F3E5DD"
+            app:layout_constraintBottom_toTopOf="@id/tab_layout"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"/>
 
 
 
@@ -45,7 +40,7 @@
         android:layout_height="wrap_content"
         android:background="#F8CCAE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refresh_layout"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager"
         app:layout_constraintVertical_bias="1.0"
         app:tabIndicatorColor="#F8CCAE" />
 

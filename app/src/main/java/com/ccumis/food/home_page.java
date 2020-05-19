@@ -29,19 +29,13 @@ import java.util.ArrayList;
 
 public class home_page extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        final SwipeRefreshLayout refresh_layout = findViewById(R.id.refresh_layout);
-        refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
 
-                refresh_layout.setRefreshing(false);
-            }
-        });
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         ViewPager viewPager = findViewById(R.id.viewPager);
