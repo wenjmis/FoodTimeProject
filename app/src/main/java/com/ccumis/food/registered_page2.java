@@ -66,7 +66,7 @@ public class registered_page2 extends AppCompatActivity {
     }
     public void registered(View view){
 
-        ProgressBar progressBar = findViewById(R.id.progressBar);
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
         CheckBox checkBox = findViewById(R.id.checkBox);
@@ -75,6 +75,7 @@ public class registered_page2 extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(registered_page2.this, "註冊成功", Toast.LENGTH_SHORT).show();
                         FirebaseUser user = fAuth.getCurrentUser();
                         data.put("userId",user.getUid());
