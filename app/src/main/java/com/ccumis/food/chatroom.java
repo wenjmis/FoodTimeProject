@@ -178,4 +178,8 @@ public class chatroom extends AppCompatActivity {
             }
         });
     }
+
+    public void back(View view) {
+        this.finish();
+    }
 }
