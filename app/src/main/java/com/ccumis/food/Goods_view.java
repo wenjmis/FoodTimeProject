@@ -83,23 +83,8 @@ public class Goods_view extends AppCompatActivity {
                             Log.d("error",task.getException().getMessage());
                     }
                 });
-                FirebaseDatabase.getInstance().getReference().child("commodity").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            commodity commodity = snapshot.getValue(com.ccumis.food.Model.commodity.class);
-                            if(commodity.good_name.equals(goodname)){
-                                commodity_key.setText(snapshot.getKey());
-                            }
-                        }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-                FirebaseDatabase.getInstance().getReference().child("commodity").child(commodity_key.getText().toString()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                FirebaseDatabase.getInstance().getReference().child("commodity").child(goodname).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 

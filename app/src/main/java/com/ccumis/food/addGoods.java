@@ -157,7 +157,7 @@ public class addGoods extends AppCompatActivity {
         hashMap.put("telephone","");
         hashMap.put("user_id",user.getUid());
         hashMap.put("name",textView12.getText().toString());
-        database.child("commodity").push().setValue(hashMap);
+        database.child("commodity").child(good_name.getText().toString()).setValue(hashMap);
         Toast.makeText(this,"新增成功",Toast.LENGTH_SHORT);
         finish();
     }
