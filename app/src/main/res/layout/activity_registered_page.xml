@@ -6,22 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".registered_page"
     android:background="@drawable/page1">
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="350dp"
-                android:layout_height="?actionBarSize"
-                android:layout_gravity="center"
-                android:layout_marginStart="31dp"
-                android:layout_marginEnd="30dp"
-                android:gravity="center"
-                android:text="註冊帳號"
-                android:textColor="#F8CBAD"
-                android:textSize="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="350dp"
+        android:layout_height="?actionBarSize"
+        android:layout_gravity="center"
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:text="@string/createAcc"
+        android:textColor="#F8CBAD"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -182,7 +183,7 @@
                 android:id="@+id/L7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="確認密碼"
+                android:hint="@string/conPwd"
                 android:textColorHint="#C55A11"
                 app:layout_constraintTop_toBottomOf="@+id/L4">
 
