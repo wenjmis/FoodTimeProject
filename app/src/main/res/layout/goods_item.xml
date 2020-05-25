@@ -22,7 +22,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toEndOf="@id/profile_image"
         android:layout_toRightOf="@+id/profile_image"
-        android:text="@string/itemName"
+        android:text="品名"
         android:textSize="28sp" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"
-        android:text="@string/remTime"
+        android:text="剩餘時間"
         android:textAlignment="textEnd"
         android:textSize="15sp" />
 
@@ -44,7 +44,7 @@
         android:layout_alignEnd="@id/username"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/profile_image"
-        android:text="@string/desc"
+        android:text="描述"
         android:textSize="18sp" />
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:paddingBottom="10dp"
-        android:text="@string/uploader"
+        android:text="上傳者"
         android:textAlignment="textEnd"
         android:textSize="15sp" />
 
@@ -66,7 +66,7 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/profile_image"
         android:paddingBottom="10dp"
-        android:text="@string/type"
+        android:text="種類"
         android:textAlignment="textEnd"
         android:textSize="15sp" />
 
