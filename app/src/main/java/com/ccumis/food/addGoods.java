@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.location.GpsStatus;
 import android.location.Location;
@@ -14,14 +15,21 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +52,8 @@ public class addGoods extends AppCompatActivity {
     private String locations="";
     private Boolean business=false;
     TextView textView12;
+    private TimePickerView pvTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +126,51 @@ public class addGoods extends AppCompatActivity {
             }
         });
 
+        initTimePicker();
 
+    }
 
+    private void initTimePicker() {
+        final EditText last_time = findViewById(R.id.last_time);
+        pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {
+                last_time.setText(getTime(date));
+            }
+        })
+                .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
+                    @Override
+                    public void onTimeSelectChanged(Date date) {
+
+                    }
+                })
+                .setType(new boolean[]{false, true, true, true, true, false})
+                .setContentTextSize(24)
+                .isDialog(true)
+                .build();
+        Dialog mDialog = pvTime.getDialog();
+        if (mDialog != null) {
+
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    Gravity.BOTTOM);
+
+            params.leftMargin = 0;
+            params.rightMargin = 0;
+            pvTime.getDialogContainerLayout().setLayoutParams(params);
+
+            Window dialogWindow = mDialog.getWindow();
+            if (dialogWindow != null) {
+                dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim);//修改動畫樣式
+                dialogWindow.setGravity(Gravity.BOTTOM);//改成Bottom,底部顯示
+            }
+        }
+    }
+
+    private String getTime(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd HH:mm");
+        return format.format(date);
     }
 
     public void submit_goods(View view) {
@@ -166,4 +219,9 @@ public class addGoods extends AppCompatActivity {
         finish();
     }
 
+    public void picktime(View view) {
+        if (pvTime != null) {
+            pvTime.show(view);//彈出時間選擇器，傳遞引數過去，回撥的時候則可以繫結此view
+        }
+    }
 }

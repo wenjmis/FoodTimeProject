@@ -79,24 +79,37 @@
                     android:hint="簡介"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <RelativeLayout
                 android:id="@+id/panel3"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/panel2">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true">                   >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/last_time"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
                     android:ems="10"
-                    android:hint="剩餘時間"
+                    android:hint="到期時間"
                     android:inputType="textPersonName" />
-            </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/pick_time"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:onClick="picktime"
+                    android:background="@drawable/ic_access_time_black_24dp" />
+            </RelativeLayout>
+
+
             <RelativeLayout
                 android:id="@+id/panel4"
                 android:layout_width="250dp"

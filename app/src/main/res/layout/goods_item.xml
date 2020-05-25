@@ -32,6 +32,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp"
         android:text="剩餘時間"
+        android:maxEms="5"
         android:textAlignment="textEnd"
         android:textSize="15sp" />
 

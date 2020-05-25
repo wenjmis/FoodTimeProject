@@ -48,7 +48,7 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
 
         holder.good_name.setText(commodity.good_name);
         holder.good_distribution.setText(commodity.good_distribution);
-        holder.last_time.setText("剩餘時間:"+commodity.last_time+"小時");
+        holder.last_time.setText("到期時間:"+commodity.last_time);
         //holder.profile_image.setImageURI("");
         if(commodity.good_price.equals("0")) {
             holder.category.setText("費用:"+"免費");
