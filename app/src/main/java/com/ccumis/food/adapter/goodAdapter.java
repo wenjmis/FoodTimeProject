@@ -48,20 +48,20 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
 
         holder.good_name.setText(commodity.good_name);
         holder.good_distribution.setText(commodity.good_distribution);
-        holder.last_time.setText("到期時間:"+commodity.last_time);
+        holder.last_time.setText(context.getResources().getString(R.string.remTime)+"："+commodity.last_time);
         //holder.profile_image.setImageURI("");
         if(commodity.good_price.equals("0")) {
-            holder.category.setText("費用:"+"免費");
+            holder.category.setText(context.getResources().getString(R.string.price)+"："+"免費");
         }
         else
-            holder.category.setText("未提供");
+            holder.category.setText(context.getResources().getString(R.string.dont_provide));
 
         if(commodity.user_id.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
-            holder.username.setText("上傳者:"+"你自己");
+            holder.username.setText(context.getResources().getString(R.string.uploader)+"："+"你自己");
             holder.background.setBackgroundColor(Color.WHITE);
         }
         else {
-            holder.username.setText("上傳者:"+commodity.name);
+            holder.username.setText(context.getResources().getString(R.string.uploader)+"："+commodity.name);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

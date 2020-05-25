@@ -47,5 +47,6 @@
     <string name="newPwd">新密碼</string>
     <string name="back">返回</string>
     <string name="conChg">確認修改</string>
+    <string name="dont_provide">未提供</string>
 
 </resources>

@@ -47,4 +47,5 @@
     <string name="back">Back</string>
     <string name="conChg">Confirm</string>
     <string name="notice">Next, you will start to complete the application of the account of \"food\" (hereinafter referred to as the platform). During the application process, your data will not be outflowed to other manufacturers. It is only used as a record of the platform and as a basis for ruling when encountering disputes. , Please fill in the information with confidence.</string>
+    <string name="dont_provide">do not provide</string>
 </resources>
