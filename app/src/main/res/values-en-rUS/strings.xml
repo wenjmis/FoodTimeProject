@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">food</string>
+    <string name="app_name">Food</string>
     <string name="pwd">Password</string>
     <string name="logIn">Log In</string>
     <string name="createAcc">Sign Up</string>
     <string name="fgtPwd">Forgot Password</string>
-    <string name="newShop">Shop Sign Up</string>
+    <string name="newShop">Shop Registration</string>
     <string name="shopName">Shop Name</string>
     <string name="add">Address</string>
     <string name="tel">Tel.</string>
     <string name="rName">Real Name</string>
-    <string name="nickname">Nickname(Change anytime)</string>
-    <string name="mailForLog">Mail(For Log In)</string>
+    <string name="nickname">Nickname (Change anytime)</string>
+    <string name="mailForLog">Mail (For Log In)</string>
     <string name="rAdd">Residential Address</string>
     <string name="conPwd">Confirm Password</string>
     <string name="newShopInfo">Add new Shop Info</string>
@@ -28,5 +28,23 @@
     <string name="tab2">explore</string>
     <string name="tab3">forum</string>
     <string name="tab4">setting</string>
+    <string name="chgLan">Change Language</string>
+    <string name="chgInfo">Change Personal Info</string>
+    <string name="version">Version Info</string>
+    <string name="addFood">Add new Item</string>
+    <string name="brief">Introduction</string>
+    <string name="charge">Charge for fee?</string>
+    <string name="price">Price</string>
+    <string name="avail">Hit shelves as a shop?</string>
+    <string name="pos">Product via POS system?</string>
+    <string name="aDD">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="telWithArea">Tel.(include area code if needed)</string>
+    <string name="order">Order in Queue</string>
+    <string name="chgPwd">Change Pwd</string>
+    <string name="oriPwd">Original Pwd</string>
+    <string name="newPwd">New Pwd</string>
+    <string name="back">Back</string>
+    <string name="conChg">Confirm</string>
     <string name="notice">Next, you will start to complete the application of the account of \"food\" (hereinafter referred to as the platform). During the application process, your data will not be outflowed to other manufacturers. It is only used as a record of the platform and as a basis for ruling when encountering disputes. , Please fill in the information with confidence.</string>
 </resources>

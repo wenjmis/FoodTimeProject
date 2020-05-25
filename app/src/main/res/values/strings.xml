@@ -21,12 +21,31 @@
     <string name="conPwd">確認密碼</string>
     <string name="newShopInfo">是否新增商家資訊</string>
     <string name="regKnow">註冊須知</string>
-    <string name="knowChck">我以詳閱註冊須知</string>
+    <string name="knowChck">我已詳閱註冊須知</string>
     <string name="itemName">品名</string>
     <string name="desc">描述</string>
     <string name="type">種類</string>
-    <string name="remTime">剩餘時間</string>
+    <string name="remTime">到期時間</string>
     <string name="uploader">上傳者</string>
     <string name="mail">信箱：</string>
     <string name="logOut">登出</string>
+    <string name="chgLan">更改語言</string>
+    <string name="chgInfo">修改個人資訊</string>
+    <string name="version">版本資訊</string>
+    <string name="addFood">新增餐點或食材</string>
+    <string name="brief">簡介</string>
+    <string name="charge">是否收費</string>
+    <string name="price">費用</string>
+    <string name="avail">是否已商家身分上架</string>
+    <string name="pos">是否要經過pos系統</string>
+    <string name="aDD">新增</string>
+    <string name="cancel">取消</string>
+    <string name="telWithArea">連絡電話(市話需含區域碼)</string>
+    <string name="order">排隊取餐</string>
+    <string name="chgPwd">更改密碼</string>
+    <string name="oriPwd">原來密碼</string>
+    <string name="newPwd">新密碼</string>
+    <string name="back">返回</string>
+    <string name="conChg">確認修改</string>
+
 </resources>

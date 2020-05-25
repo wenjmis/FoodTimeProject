@@ -25,7 +25,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="新增餐點或食材"
+                android:text="@string/addFood"
                 android:textSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:hint="品名"
+                    android:hint="@string/itemName"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:hint="簡介"
+                    android:hint="@string/brief"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
             <RelativeLayout
@@ -97,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:ems="10"
-                    android:hint="到期時間"
+                    android:hint="@string/remTime"
                     android:inputType="textPersonName" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <Button
@@ -130,7 +130,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
                         android:ems="10"
-                        android:hint="地址"
+                        android:hint="@string/add"
                         android:inputType="textPostalAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <Button
@@ -144,7 +144,7 @@
                 android:id="@+id/chip2"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:text="是否有費用"
+                android:text="@string/charge"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/panel4" />
@@ -164,7 +164,7 @@
                     android:layout_gravity="center"
                     android:ems="10"
                     android:enabled="false"
-                    android:hint="費用"
+                    android:hint="@string/price"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="submit_goods"
-                android:text="新增"
+                android:text="@string/aDD"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.25"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="取消"
+                android:text="@string/cancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
                 app:layout_constraintStart_toStartOf="parent"
@@ -194,7 +194,7 @@
                 android:id="@+id/switch1"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:text="是否以商家身分上架"
+                android:text="@string/avail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/panel5" />
