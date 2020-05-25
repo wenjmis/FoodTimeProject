@@ -140,6 +140,7 @@
                     android:layout_alignParentRight="true"
                     android:background="@drawable/ic_edit_location_black_24dp" />
             </RelativeLayout>
+
             <Switch
                 android:id="@+id/chip2"
                 android:layout_width="240dp"
