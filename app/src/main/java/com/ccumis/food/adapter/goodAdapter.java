@@ -63,6 +63,7 @@ public class goodAdapter extends RecyclerView.Adapter<goodAdapter.ViewHolder> {
         else {
             holder.username.setText(context.getResources().getString(R.string.uploader)+"："+commodity.name);
         }
+        holder.profile_image.setBackgroundResource(R.drawable.item);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

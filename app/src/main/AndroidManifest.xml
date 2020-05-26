@@ -26,7 +26,8 @@
             android:theme="@style/AppTheme.Pop_window" />
         <activity
             android:name=".chatroom"
-            android:screenOrientation="nosensor" />
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".businregist_page"
             android:screenOrientation="nosensor" />

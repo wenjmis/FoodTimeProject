@@ -13,7 +13,7 @@
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/ic_image_black_24dp" />
+        android:background="@drawable/ic_image_black_24dp"/>
 
     <TextView
         android:id="@+id/good_name"
